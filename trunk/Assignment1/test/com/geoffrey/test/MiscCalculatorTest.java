@@ -11,44 +11,34 @@ import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
+import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-
 /**
  *
  * @author 211026298
  */
-public class Assignment1Test {
+public class MiscCalculatorTest {
     private static Calculator calculator;
     private static Calculator scifiCalculator;
     private static ApplicationContext ctx;
-    public Assignment1Test() {
+    public MiscCalculatorTest() {
     }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
     @Test
-    public void testLargest() {
-        Assert.assertEquals(calculator.largestNumber((float)5.78, (float)5.79), (float)5.79, "Largest failed");
-    }
-    
-    @Test
-    public void testFactorial() {
-        Assert.assertEquals(calculator.calculateFactorial(5), 120, "Factorial failed");
-    }
-    
-    @Test
     public void testCalculatorEuality() {
-        Calculator tempCalculator = (Calculator)ctx.getBean("calculator");
+        Calculator tempCalculator = (Calculator)ctx.getBean("misc");
         Assert.assertEquals(calculator, tempCalculator,"Objects are not equal");
     }
     @Test
     public void testCalculatorIdentity() {
-        Calculator tempCalculator = (Calculator)ctx.getBean("calculator");
+        Calculator tempCalculator = (Calculator)ctx.getBean("misc");
         Assert.assertSame(calculator, tempCalculator, "Objects are not the same instance");
     }
     
@@ -90,8 +80,7 @@ public class Assignment1Test {
     @BeforeClass
     public static void setUpClass() throws Exception {
         ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-        calculator = (Calculator)ctx.getBean("calculator");
-        scifiCalculator = (Calculator)ctx.getBean("scientific");
+        calculator = (Calculator)ctx.getBean("misc");
     }
 
     @AfterClass

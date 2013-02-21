@@ -4,15 +4,14 @@
  */
 package com.geoffrey.assignmment.Calculator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author 211026298
  */
-public class CalculatorImp implements Calculator {
-    private List<Integer> seqence;
+public class IntegerImp implements Calculator {
+    
     @Override
     public int calculateFactorial(int factor){
         int factorial = 1;
@@ -22,20 +21,21 @@ public class CalculatorImp implements Calculator {
         return factorial;
     }
 
+    
+
     @Override
     public float largestNumber(float num1, float num2) {
-        return (num1 > num2)?num1:num2;
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public boolean greaterThan(int num1, int num2) {
-        return (num1 > num2)?true:false;
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public List<Integer> setUpSequence(List<Integer> tempSeqence) {
-        seqence = new ArrayList<>();
-        return seqence = tempSeqence;
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }
