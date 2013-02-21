@@ -5,8 +5,9 @@
 package com.geoffrey.config;
 
 import com.geoffrey.assignmment.Calculator.Calculator;
-import com.geoffrey.assignmment.Calculator.CalculatorImp;
-import com.geoffrey.assignmment.Calculator.ScientificCalculator;
+import com.geoffrey.assignmment.Calculator.FloatImp;
+import com.geoffrey.assignmment.Calculator.IntegerImp;
+import com.geoffrey.assignmment.Calculator.MiscImp;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,12 +17,19 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class AppConfig {
-    @Bean(name="calculator")
-    public Calculator getCalculatorImp(){
-        return new CalculatorImp();
+    @Bean(name="interger")
+    public Calculator getIntegerImp(){
+        return new IntegerImp();
     }
-    @Bean(name="scientific")
-    public Calculator getTestImp(){
-        return new ScientificCalculator();
+    
+    @Bean(name="float")
+    public Calculator getFloatImp(){
+        return new FloatImp();
     }
+    
+    @Bean(name="misc")
+    public Calculator getMiscImp(){
+        return new MiscImp();
+    }
+    
 }
