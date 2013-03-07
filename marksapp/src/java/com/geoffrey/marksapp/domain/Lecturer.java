@@ -5,6 +5,7 @@
 package com.geoffrey.marksapp.domain;
 
 import java.io.Serializable;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,44 @@ public class Lecturer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String firstName;
+    private String lastName;
+    private String staffNumber;
+    
+    @Embedded
+    private Demographic demographic;
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getStaffNumber() {
+        return staffNumber;
+    }
+
+    public void setStaffNumber(String staffNumber) {
+        this.staffNumber = staffNumber;
+    }
+
+    public Demographic getDemographic() {
+        return demographic;
+    }
+
+    public void setDemographic(Demographic demographic) {
+        this.demographic = demographic;
+    }
     public Long getId() {
         return id;
     }
