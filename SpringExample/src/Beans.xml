@@ -7,10 +7,11 @@
 
     <!-- Scans within the base package of the application for @Components to configure as beans -->
  
-    <bean id="helloWorld" class="com.tutorialspoint.HelloWorld"> 
-        <property name="message" value="Hello World!"/> 
+    <bean id="textEditor" class="com.tutorialspoint.TextEditor">
+        <property name="spellChecker" ref="spellChecker"/>
     </bean>
- 
+    <bean id="spellChecker" class="com.tutorialspoint.SpellChecker">
+    </bean>
 </beans>
 
 
