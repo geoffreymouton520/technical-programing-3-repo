@@ -4,8 +4,8 @@
  */
 package com.tutorialspoint;
 
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -14,8 +14,9 @@ import org.springframework.core.io.ClassPathResource;
 public class MainApp {
 
     public static void main(String[] args) {
-        XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("Beans.xml"));
-        HelloWorld obj = (HelloWorld) factory.getBean("helloWorld");
-        obj.getMessage();
+        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+
+        TextEditor textEditor = (TextEditor) context.getBean("textEditor");
+        textEditor.spellCheck();
     }
 }
