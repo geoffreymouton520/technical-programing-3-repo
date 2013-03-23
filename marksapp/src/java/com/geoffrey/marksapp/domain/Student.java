@@ -3,8 +3,8 @@
  * and open the template in the editor.
  */
 package com.geoffrey.marksapp.domain;
-
 import java.io.Serializable;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +12,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author 211026298
+ * @author boniface
  */
 @Entity
 public class Student implements Serializable {
@@ -20,6 +20,46 @@ public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String firstName;
+    private String lastName;
+    private String studentNumber;
+    @Embedded
+    private Demographic demographic;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(String studentNumber) {
+        this.studentNumber = studentNumber;
+    }
+
+    public Demographic getDemographic() {
+        return demographic;
+    }
+
+    public void setDemographic(Demographic demography) {
+        this.demographic = demography;
+    }
+    
+    
+    
 
     public Long getId() {
         return id;

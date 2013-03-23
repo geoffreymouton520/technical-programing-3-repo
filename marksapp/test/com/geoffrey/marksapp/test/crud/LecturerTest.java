@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.geoffrey.marksapp.test;
+package com.geoffrey.marksapp.test.crud;
 
 import com.geoffrey.marksapp.app.factory.DemographicFactory;
 import com.geoffrey.marksapp.app.factory.LecturerFactory;
@@ -10,11 +10,12 @@ import com.geoffrey.marksapp.domain.Demographic;
 import com.geoffrey.marksapp.domain.Lecturer;
 import com.geoffrey.marksapp.services.crud.LecturerCrudService;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.util.Assert;
-
+import org.testng.Assert;
+import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -36,7 +37,7 @@ public class LecturerTest {
     
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/marksapp/app/conf/applicationContext-*.xml");
+        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/marksapp/app/config/applicationContext-*.xml");
     }
 
     @AfterClass
@@ -66,31 +67,40 @@ public class LecturerTest {
         lecturerCrudService.persist(naidook);
         id = naidook.getId();
         
-        Assert.notNull(naidook);
+        Assert.assertNotNull(naidook);
     }
     
-    @Test
+    @Test(dependsOnMethods="createLecturer")
     public void readLecturer() {
-        lecturerCrudService = (LecturerCrudService)ctx.getBean("lecturerCrudService");
-        Lecturer lecturer = lecturerCrudService.findById(id);
-        Assert.notNull(lecturer);
+        lecturerCrudService = (LecturerCrudService) ctx.getBean("lecturerCrudService");
+        Lecturer k = lecturerCrudService.findById(id);
+        Assert.assertNotNull(k);
     }
     
-    @Test
+    @Test(dependsOnMethods="readLecturer")
     public void updateLecturer() {
-        lecturerCrudService = (LecturerCrudService)ctx.getBean("lecturerCrudService");
-        Lecturer lecturer = lecturerCrudService.findById(id);
-        lecturer.setStaffNumber("999");
-        lecturerCrudService.merge(lecturer);
+        lecturerCrudService = (LecturerCrudService) ctx.getBean("lecturerCrudService");
+        Lecturer k = lecturerCrudService.findById(id);
+        k.setStaffNumber("999");
+        lecturerCrudService.merge(k);
         Lecturer update = lecturerCrudService.findById(id);
-        //Assert.
+        Assert.assertEquals(update.getStaffNumber(), "999");
     }
     
-    @Test
+    @Test(dependsOnMethods ="updateLecturer" )
     public void readLecturers() {
+        lecturerCrudService = (LecturerCrudService) ctx.getBean("lecturerCrudService");
+        List<Lecturer> lecturers = lecturerCrudService.findAll();
+        Assert.assertTrue(lecturers.size() > 0);
+        
     }
     
-    @Test
+     @Test(dependsOnMethods ="readLecturers" )
     public void deleteLecturer() {
+        lecturerCrudService = (LecturerCrudService) ctx.getBean("lecturerCrudService");
+        Lecturer k = lecturerCrudService.findById(id);
+        lecturerCrudService.remove(k);
+        Lecturer deleted = lecturerCrudService.findById(id);
+        Assert.assertNull(deleted);
     }
 }
