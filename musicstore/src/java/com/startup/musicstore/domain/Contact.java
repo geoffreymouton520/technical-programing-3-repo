@@ -14,7 +14,15 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Contact implements Serializable{
     private String phoneNumber;
-    private String cellNumber;
+    private String contactNumber;
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -24,12 +32,6 @@ public class Contact implements Serializable{
         this.phoneNumber = phoneNumber;
     }
 
-    public String getCellNumber() {
-        return cellNumber;
-    }
-
-    public void setCellNumber(String cellNumber) {
-        this.cellNumber = cellNumber;
-    }
+    
     
 }
