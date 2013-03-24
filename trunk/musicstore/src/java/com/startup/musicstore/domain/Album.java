@@ -35,7 +35,7 @@ public class Album implements Serializable {
     private MarketingInformation marketingInformation;
     @OneToOne(orphanRemoval=true,cascade= CascadeType.ALL)
     @JoinColumn(name="albumId")
-    private List<Track> track = new ArrayList<Track>();
+    private List<Track> tracks = new ArrayList<Track>();
     @ManyToOne
     private AlbumCategory albumCategory;
 
@@ -79,12 +79,12 @@ public class Album implements Serializable {
         this.marketingInformation = marketingInformation;
     }
 
-    public List<Track> getTrack() {
-        return track;
+    public List<Track> getTracks() {
+        return tracks;
     }
 
-    public void setTrack(List<Track> track) {
-        this.track = track;
+    public void setTracks(List<Track> tracks) {
+        this.tracks = tracks;
     }
 
     public AlbumCategory getAlbumCategory() {
