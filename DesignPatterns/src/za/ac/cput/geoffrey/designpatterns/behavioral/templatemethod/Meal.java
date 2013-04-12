@@ -9,20 +9,20 @@ package za.ac.cput.geoffrey.designpatterns.behavioral.templatemethod;
  * @author geoffrey
  */
 public abstract class Meal {
-    public final void doMeal(){
-        prepareIngredient();
-        cook();
-        eat();
-        cleanUp();
+    public final String doMeal(){
+        return prepareIngredient()+" "+
+                cook()+" "+
+                eat()+" "+
+                cleanUp();
     }
 
-    public abstract void prepareIngredient();
+    public abstract String prepareIngredient();
 
-    public abstract void cook();
+    public abstract String cook();
 
-    public void eat() {
-        System.out.println("Mmm, that's good");
+    public String eat() {
+        return "Mmm, that's good";
     }
 
-    public abstract void cleanUp();
+    public abstract String cleanUp();
 }

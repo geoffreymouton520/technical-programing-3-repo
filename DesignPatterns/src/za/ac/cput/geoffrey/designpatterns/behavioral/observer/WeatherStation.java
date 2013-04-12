@@ -40,10 +40,10 @@ public class WeatherStation implements WeatherSubject{
         }
     }
 
-    public void setTemperature(int temperature) {
-        System.out.println("\nWeather station setting temperature to " + temperature);
+    public String setTemperature(int temperature) {
         this.temperature = temperature;
         doNotify();
+        return "Weather station setting temperature to " + temperature;
     }
     
 }

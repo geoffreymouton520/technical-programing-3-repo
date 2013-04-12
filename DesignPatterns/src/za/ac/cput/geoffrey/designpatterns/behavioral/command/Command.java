@@ -9,5 +9,5 @@ package za.ac.cput.geoffrey.designpatterns.behavioral.command;
  * @author geoffrey
  */
 public interface Command {
-    public void execute();
+    public String execute();
 }

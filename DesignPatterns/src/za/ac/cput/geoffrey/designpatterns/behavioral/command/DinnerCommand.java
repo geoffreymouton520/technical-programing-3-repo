@@ -16,8 +16,8 @@ public class DinnerCommand implements Command{
     }
 
     @Override
-    public void execute() {
-        dinner.makeDinner();
+    public String execute() {
+        return dinner.makeDinner();
     }
     
 }

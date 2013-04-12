@@ -21,7 +21,7 @@ public class SingletonExample {
         return singletonExample;
     }
     
-    public void sayHello(){
-        System.out.println("Hello");
+    public String sayHello(){
+        return("Hello");
     }
 }

@@ -16,13 +16,11 @@ public class WingDecorator extends AnimalDecorator{
 
     
     @Override
-    public void describe() {
-        animal.describe();
-        System.out.println("I have wings.");
-        fly();
+    public String describe() {
+        return animal.describe() + " I have wings."+ " " + fly();
     }
     
-    public void fly(){
-        System.out.println("I can fly.");
+    public String fly(){
+        return("I can fly.");
     }
 }

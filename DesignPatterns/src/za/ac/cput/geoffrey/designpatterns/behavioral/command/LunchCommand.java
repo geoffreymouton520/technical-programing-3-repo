@@ -16,8 +16,8 @@ public class LunchCommand implements Command{
     }
 
     @Override
-    public void execute() {
-        lunch.makeLunch();
+    public String execute() {
+        return lunch.makeLunch();
     }
     
 }

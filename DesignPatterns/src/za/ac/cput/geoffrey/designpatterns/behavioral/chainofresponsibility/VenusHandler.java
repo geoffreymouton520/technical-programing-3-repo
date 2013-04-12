@@ -10,15 +10,11 @@ package za.ac.cput.geoffrey.designpatterns.behavioral.chainofresponsibility;
  */
 public class VenusHandler extends PlanetHandler{
     @Override
-    public void handleRequest(PlanetEnum request) {
+    public String handleRequest(PlanetEnum request) {
         if (request == PlanetEnum.VENUS) {
-            System.out.println("VenusHandler handles " + request);
-            System.out.println("Venus is poisonous.\n");
+            return "venus";
         } else {
-            System.out.println("VenusHandler doesn't handles " + request);
-            if (successor != null) {
-                successor.handleRequest(request);
-            }
+            return successor.handleRequest(request);
         }
     }
 }

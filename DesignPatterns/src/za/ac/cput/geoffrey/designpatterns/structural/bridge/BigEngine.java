@@ -18,8 +18,12 @@ public class BigEngine implements Engine{
     
     @Override
     public int go() {
-        System.out.println("\nThe big engine is running");
         return horsepower;
+    }
+
+    @Override
+    public String toString() {
+        return "The big engine is running";
     }
     
 }

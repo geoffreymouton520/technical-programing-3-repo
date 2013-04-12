@@ -13,15 +13,14 @@ import java.util.List;
 public class SumVisitor implements NumberVisitor{
 
     @Override
-    public void visit(TwoElement twoElement) {
-        int sum = twoElement.a + twoElement.b;
-        System.out.println(twoElement.a + "+" + twoElement.b + "=" + sum);
+    public int visit(TwoElement twoElement) {
+        return twoElement.a + twoElement.b;
+        
     }
 
     @Override
-    public void visit(ThreeElement threeElement) {
-        int sum = threeElement.a + threeElement.b + threeElement.c;
-        System.out.println(threeElement.a + "+" + threeElement.b + "+" + threeElement.c + "=" + sum);
+    public int visit(ThreeElement threeElement) {
+        return threeElement.a + threeElement.b + threeElement.c;
     }
 
     @Override

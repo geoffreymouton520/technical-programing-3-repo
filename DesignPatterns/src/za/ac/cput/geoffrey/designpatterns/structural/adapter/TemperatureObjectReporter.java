@@ -8,12 +8,16 @@ package za.ac.cput.geoffrey.designpatterns.structural.adapter;
  *
  * @author geoffrey
  */
-public class TemperatureOjbectReporter implements TemperatureInfo{
+public class TemperatureObjectReporter implements TemperatureInfo{
 
     CelciusReporter celciusReporter;
 
-    public TemperatureOjbectReporter(CelciusReporter celciusReporter) {
+    public TemperatureObjectReporter(CelciusReporter celciusReporter) {
         this.celciusReporter = celciusReporter;
+    }
+
+    public TemperatureObjectReporter() {
+        celciusReporter = new CelciusReporter();
     }
     
     @Override

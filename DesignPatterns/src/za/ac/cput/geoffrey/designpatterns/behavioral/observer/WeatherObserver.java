@@ -9,5 +9,5 @@ package za.ac.cput.geoffrey.designpatterns.behavioral.observer;
  * @author geoffrey
  */
 public interface WeatherObserver {
-    public void doUpdate(int temperature);
+    public String doUpdate(int temperature);
 }

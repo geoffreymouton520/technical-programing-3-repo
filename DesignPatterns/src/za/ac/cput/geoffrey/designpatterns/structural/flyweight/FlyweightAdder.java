@@ -21,7 +21,7 @@ public class FlyweightAdder implements Flyweight{
     }
     
     @Override
-    public void doMath(int a, int b) {
-        System.out.println(operation + " " + a + " and " + b + ": " + (a + b));
+    public int doMath(int a, int b) {
+        return a + b;
     }
 }

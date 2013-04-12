@@ -16,12 +16,10 @@ public class LegDecorator extends AnimalDecorator{
     
     
     @Override
-    public void describe() {
-        animal.describe();
-        System.out.println("I have legs.");
-        dance();
+    public String describe() {
+        return animal.describe() + " I have legs." + " " + dance();
     }
-    public void dance(){
-        System.out.println("I can dance.");
+    public String dance(){
+        return("I can dance.");
     }
 }

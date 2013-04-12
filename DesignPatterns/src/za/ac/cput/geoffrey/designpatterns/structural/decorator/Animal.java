@@ -9,5 +9,5 @@ package za.ac.cput.geoffrey.designpatterns.structural.decorator;
  * @author geoffrey
  */
 public interface Animal {
-    public void describe();
+    public String describe();
 }

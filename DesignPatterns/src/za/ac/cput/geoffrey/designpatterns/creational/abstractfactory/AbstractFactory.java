@@ -10,7 +10,7 @@ package za.ac.cput.geoffrey.designpatterns.creational.abstractfactory;
  */
 public class AbstractFactory {
     public SpeciesFactory getSpeciesFactory(String type){
-        if (type.equals("Mammal")){
+        if ("Mammal".equals(type)){
             return new MammalFactory();
         }else
         {

@@ -11,8 +11,8 @@ package za.ac.cput.geoffrey.designpatterns.behavioral.observer;
 public class WeatherCustomer2 implements WeatherObserver{
 
     @Override
-    public void doUpdate(int temperature) {
-        System.out.println("\nWeather customer 2 just found out the temperature is:" + temperature);
+    public String doUpdate(int temperature) {
+        return "Weather customer 2 just found out the temperature is:" + temperature;
     }
     
 }

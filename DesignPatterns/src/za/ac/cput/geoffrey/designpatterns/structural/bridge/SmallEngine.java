@@ -19,8 +19,10 @@ public class SmallEngine implements Engine{
     
     @Override
     public int go() {
-        System.out.println("\nThe small engine is running");
         return horsepower;
     }
-    
+    @Override
+    public String toString() {
+        return "The small engine is running";
+    }
 }

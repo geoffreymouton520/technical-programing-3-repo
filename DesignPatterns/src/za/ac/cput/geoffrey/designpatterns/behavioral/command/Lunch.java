@@ -10,8 +10,8 @@ package za.ac.cput.geoffrey.designpatterns.behavioral.command;
  */
 public class Lunch {
 
-    public void makeLunch() {
-        System.out.println("Lunch is being made");
+    public String makeLunch() {
+        return "Lunch is being made";
     }
     
 }

@@ -12,7 +12,7 @@ public class MammalFactory implements SpeciesFactory{
 
     @Override
     public Animal getAnimal(String type){
-        if (type.equals("Canine")){
+        if ("Dog".equals(type)){
             return new Dog();
         }else
         {
