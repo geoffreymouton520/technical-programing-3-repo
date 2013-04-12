@@ -9,6 +9,6 @@ package za.ac.cput.geoffrey.designpatterns.structural.composite;
  * @author geoffrey
  */
 public interface Component {
-    public void sayHello();
-    public void sayGoodbye();
+    public String sayHello();
+    public String sayGoodbye();
 }

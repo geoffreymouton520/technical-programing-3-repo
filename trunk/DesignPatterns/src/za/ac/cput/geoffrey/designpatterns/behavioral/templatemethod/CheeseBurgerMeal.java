@@ -11,23 +11,23 @@ package za.ac.cput.geoffrey.designpatterns.behavioral.templatemethod;
 public class CheeseBurgerMeal extends Meal{
 
     @Override
-    public void prepareIngredient() {
-        System.out.println("Getting ground beef and Cheese");
+    public String prepareIngredient() {
+        return("Getting ground beef and Cheese");
     }
 
     @Override
-    public void cook() {
-        System.out.println("Cooking ground beef in pan");
+    public String cook() {
+        return("Cooking ground beef in pan");
     }
 
     @Override
-    public void eat(){
-        System.out.println("The Cheese Burgers are tasty");
+    public String eat(){
+        return("The Cheese Burgers are tasty");
     }
     
     @Override
-    public void cleanUp() {
-        System.out.println("Doing the dishes");
+    public String cleanUp() {
+        return("Doing the dishes");
     }
     
 }

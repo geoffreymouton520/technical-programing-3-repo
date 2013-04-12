@@ -13,17 +13,17 @@ import java.util.List;
 public class TotalSumVisitor implements NumberVisitor{
     int totalSum = 0;
     @Override
-    public void visit(TwoElement twoElement) {
+    public int visit(TwoElement twoElement) {
         int sum = twoElement.a + twoElement.b;
-        System.out.println("Adding" + twoElement.a + "+" + twoElement.b + "=" + sum + " to total");
         totalSum += sum;
+        return sum;
     }
 
     @Override
-    public void visit(ThreeElement threeElement) {
+    public int visit(ThreeElement threeElement) {
         int sum = threeElement.a + threeElement.b + threeElement.c;
-        System.out.println("Adding" + threeElement.a + "+" + threeElement.b + "+" + threeElement.c + "=" + sum + " to total");
         totalSum += sum;
+        return sum;
     }
 
     @Override

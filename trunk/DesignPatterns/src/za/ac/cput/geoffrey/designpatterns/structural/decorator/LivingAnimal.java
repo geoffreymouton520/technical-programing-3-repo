@@ -11,8 +11,8 @@ package za.ac.cput.geoffrey.designpatterns.structural.decorator;
 public class LivingAnimal implements Animal{
 
     @Override
-    public void describe() {
-        System.out.println("\nI am an animal.");
+    public String describe() {
+        return("I am an animal.");
     }
     
 }

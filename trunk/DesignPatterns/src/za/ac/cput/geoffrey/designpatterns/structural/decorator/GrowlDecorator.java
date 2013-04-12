@@ -16,12 +16,11 @@ public class GrowlDecorator extends AnimalDecorator{
 
     
     @Override
-    public void describe() {
-        animal.describe();
-        growl();
+    public String describe() {
+        return animal.describe() + " " + growl();
     }
     
-    public void growl(){
-        System.out.println("Grrrrr.");
+    public String growl(){
+       return("Grrrrr.");
     }
 }

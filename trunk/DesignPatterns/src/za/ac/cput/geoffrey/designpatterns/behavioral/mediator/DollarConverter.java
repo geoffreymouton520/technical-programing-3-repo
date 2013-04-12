@@ -22,13 +22,11 @@ public class DollarConverter {
     
     private float convertEurosToDollars(float euros) {
         float dollars = euros * (DOLLAR_UNIT / EURO_UNIT);
-        System.out.println("Converting " + euros + " euros to " + dollars + " dollars");
         return dollars;
     }
     
     private float convertKronorToDollars(float kronor) {
         float dollars = kronor * (DOLLAR_UNIT / KRONA_UNIT);
-        System.out.println("Converting " + kronor + " kronor to " + dollars + " dollars");
         return dollars;
     }
     public float convertCurrencyToDollars(float bid, String unitOfCurrency) {

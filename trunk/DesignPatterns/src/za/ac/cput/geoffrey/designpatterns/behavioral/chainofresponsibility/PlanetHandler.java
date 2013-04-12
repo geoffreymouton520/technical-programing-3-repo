@@ -16,5 +16,5 @@ public abstract class PlanetHandler {
         this.successor = successor;
     }
     
-    public abstract void handleRequest(PlanetEnum request);
+    public abstract String handleRequest(PlanetEnum request);
 }

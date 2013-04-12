@@ -10,15 +10,11 @@ package za.ac.cput.geoffrey.designpatterns.behavioral.chainofresponsibility;
  */
 public class EarthHandler extends PlanetHandler{
     @Override
-    public void handleRequest(PlanetEnum request) {
+    public String handleRequest(PlanetEnum request) {
         if (request == PlanetEnum.EARTH) {
-            System.out.println("EarthHandler handles " + request);
-            System.out.println("Earth is comfortable.\n");
+            return "earth";
         } else {
-            System.out.println("EarthHandler doesn't handles " + request);
-            if (successor != null) {
-                successor.handleRequest(request);
-            }
+            return successor.handleRequest(request);
         }
     }
 }

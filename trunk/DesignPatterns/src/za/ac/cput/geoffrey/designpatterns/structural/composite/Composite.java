@@ -16,17 +16,21 @@ public class Composite implements Component{
     List<Component> components = new ArrayList<>();
     
     @Override
-    public void sayHello() {
+    public String sayHello() {
+        String hello = "";
         for (Component component : components) {
-            component.sayHello();
+            hello += component.sayHello();
         }
+        return hello;
     }
 
     @Override
-    public void sayGoodbye() {
+    public String sayGoodbye() {
+        String goodbye = "";
         for (Component component : components) {
-            component.sayGoodbye();
+            goodbye += component.sayGoodbye();
         }
+        return goodbye;
     }
     
     public void add(Component component){

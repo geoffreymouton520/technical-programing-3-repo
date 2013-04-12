@@ -11,15 +11,13 @@ package za.ac.cput.geoffrey.designpatterns.structural.bridge;
 public class SmallCar extends Vehicle{
 
     public SmallCar(Engine engine) {
-        this.weightInKilos = 3000;
+        this.weightInKilos = 600;
         this.engine = engine;
     }
     
     @Override
-    public void drive() {
-        System.out.println("\nThe small car is driving");
+    public String drive() {
         int horsepower = engine.go();
-        reportOnSpeed(horsepower);
+        return"The small car is driving " + engine + " " + reportOnSpeed(horsepower);
     }
-    
 }

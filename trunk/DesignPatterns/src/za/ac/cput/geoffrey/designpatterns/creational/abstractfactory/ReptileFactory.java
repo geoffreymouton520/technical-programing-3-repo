@@ -13,10 +13,10 @@ public class ReptileFactory implements SpeciesFactory{
     @Override
     public Animal getAnimal(String type) {
         if (type.equals("Snake")){
-            return new Dog();
+            return new Snake();
         }else
         {
-            return new Cat();
+            return new Tyrannosaurus();
         }
     }
     

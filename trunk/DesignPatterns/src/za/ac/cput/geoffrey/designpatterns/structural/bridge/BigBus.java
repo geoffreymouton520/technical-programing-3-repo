@@ -16,10 +16,9 @@ public class BigBus extends Vehicle{
     }
     
     @Override
-    public void drive() {
-        System.out.println("\nThe big bus is driving");
+    public String drive() {
         int horsepower = engine.go();
-        reportOnSpeed(horsepower);
+        return "The big bus is driving " + engine + " " + reportOnSpeed(horsepower);
     }
     
 }

@@ -9,5 +9,5 @@ package za.ac.cput.geoffrey.designpatterns.structural.flyweight;
  * @author geoffrey
  */
 public interface Flyweight {
-    public void doMath(int a, int b);
+    public int doMath(int a, int b);
 }

@@ -38,8 +38,9 @@ public class Meal {
     }
 
     
+    @Override
     public String toString() {
-        return "drink: " + drink + ", main course:" + mainCourse + ", side:" + side;
+        return "drink:" + drink + ", main course:" + mainCourse + ", side:" + side;
     }
     
     

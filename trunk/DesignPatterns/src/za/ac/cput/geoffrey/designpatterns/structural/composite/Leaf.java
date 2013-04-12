@@ -17,13 +17,13 @@ public class Leaf implements Component{
     }
     
     @Override
-    public void sayHello() {
-        System.out.println(name + " leaf says hello");
+    public String sayHello() {
+        return name + " leaf says hello ";
     }
 
     @Override
-    public void sayGoodbye() {
-        System.out.println(name + " leaf says goodbye");
+    public String sayGoodbye() {
+        return name + " leaf says goodbye ";
     }
     
 }

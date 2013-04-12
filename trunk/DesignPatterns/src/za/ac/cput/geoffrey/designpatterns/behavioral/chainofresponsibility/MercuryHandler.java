@@ -11,15 +11,11 @@ package za.ac.cput.geoffrey.designpatterns.behavioral.chainofresponsibility;
 public class MercuryHandler extends PlanetHandler{
 
     @Override
-    public void handleRequest(PlanetEnum request) {
+    public String handleRequest(PlanetEnum request) {
         if (request == PlanetEnum.MERCURY) {
-            System.out.println("MercuryHandler handles " + request);
-            System.out.println("Mercury is hot.\n");
+            return "mercury";
         } else {
-            System.out.println("MercuryHandler doesn't handles " + request);
-            if (successor != null) {
-                successor.handleRequest(request);
-            }
+            return successor.handleRequest(request);
         }
     }
     

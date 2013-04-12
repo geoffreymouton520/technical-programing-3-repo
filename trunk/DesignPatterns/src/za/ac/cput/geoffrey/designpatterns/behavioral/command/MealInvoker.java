@@ -18,7 +18,7 @@ public class MealInvoker {
     public void setCommand(Command command) {
         this.command = command;
     }
-    public void invoke(){
-        command.execute();
+    public String invoke(){
+        return command.execute();
     }
 }
