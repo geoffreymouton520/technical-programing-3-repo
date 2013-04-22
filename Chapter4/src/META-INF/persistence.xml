@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="gymappPU" transaction-type="RESOURCE_LOCAL">
+    <class>com.geoffrey.gymapp.domain.Roles</class>
+    <class>com.geoffrey.gymapp.domain.Users</class>
+    <class>com.geoffrey.gymapp.domain.Person</class>
+    <class>com.geoffrey.gymapp.domain.Address</class>
+    <class>com.geoffrey.gymapp.domain.Preferences</class>
+    <class>com.geoffrey.gymapp.domain.ExercisePreference</class>
+    <class>com.geoffrey.gymapp.domain.Goal</class>
+    <class>com.geoffrey.gymapp.domain.ExerciseGoal</class>
+    <class>com.geoffrey.gymapp.domain.BodyStatGoal</class>
+    <class>com.geoffrey.gymapp.domain.RoutineItem</class>
+    <class>com.geoffrey.gymapp.domain.Workout</class>
+    <class>com.geoffrey.gymapp.domain.WorkoutItem</class>
+    <class>com.geoffrey.gymapp.domain.Exercise</class>
+    <class>com.geoffrey.gymapp.domain.Statistic</class>
+    <class>com.geoffrey.gymapp.domain.FitnessRoutine</class>
+  </persistence-unit>
+</persistence>
