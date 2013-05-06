@@ -7,10 +7,12 @@ package com.geoffrey.gymapp.test.crud;
 import com.geoffrey.gymapp.app.factory.ExerciseFactory;
 import com.geoffrey.gymapp.domain.Exercise;
 import com.geoffrey.gymapp.domain.MuscleGroup;
+import com.geoffrey.gymapp.services.AddExerciseService;
 import com.geoffrey.gymapp.services.crud.ExerciseCrudService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.testng.Assert;
@@ -26,8 +28,14 @@ import org.testng.annotations.Test;
  */
 public class ExerciseTest {
     private static ApplicationContext ctx;
-    private ExerciseCrudService exerciseCrudService;
+    
     private Long id;
+    
+    @Autowired
+    private AddExerciseService addExerciseService;
+    
+    @Autowired
+    private ExerciseCrudService exerciseCrudService;
     
     public ExerciseTest() {
     }
@@ -40,7 +48,7 @@ public class ExerciseTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
+        //ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
     }
 
     @AfterClass
@@ -57,18 +65,14 @@ public class ExerciseTest {
     
     @Test
     public void createExercise() {
-        exerciseCrudService = (ExerciseCrudService) ctx.getBean("exerciseCrudService");
-        ExerciseFactory exerciseFactory = ExerciseFactory.getInstance();
-        
         Map<String,String> exerciseDetails = new HashMap<String,String>();
         exerciseDetails.put("Description", "Workout your chest.");
         exerciseDetails.put("Equipment", "Dumbbell, Bench");
         exerciseDetails.put("Instructions", "Work your chest");
         exerciseDetails.put("Name", "Dumbbell Bench Press");
         
-        Exercise exercise = exerciseFactory.getExercise(exerciseDetails, MuscleGroup.CHEST, 50.0f);
-        exerciseCrudService.persist(exercise);
-        id = exercise.getId();
+        id = addExerciseService.addExercise(exerciseDetails, MuscleGroup.CHEST, 50.0f);
+        Exercise exercise = exerciseCrudService.findById(id);
         Assert.assertNotNull(exercise);
         
     }
