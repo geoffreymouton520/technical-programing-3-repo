@@ -75,8 +75,9 @@ public class ExerciseTest {
         exerciseDetails.put("Name", "Dumbbell Bench Press");
         
         
-        id = addExerciseService.addExercise(exerciseDetails, MuscleGroup.CHEST, 50.0f);
-        Assert.assertNotNull(id);
+        Exercise exercise = addExerciseService.addExercise(exerciseDetails, MuscleGroup.CHEST, 50.0f);
+        id = exercise.getId();
+        Assert.assertNotNull(exercise);
         
         
     }
@@ -107,7 +108,7 @@ public class ExerciseTest {
         for(Exercise exercise : exercises){
             System.out.println(exercise.getName());
         }
-       Assert.assertTrue(exercises.size() > 0);
+        Assert.assertTrue(exercises.size() > 0);
     }
     
     @Test(dependsOnMethods ="readExercises" )
@@ -117,7 +118,5 @@ public class ExerciseTest {
         exerciseCrudService.remove(exercise);
         Exercise deletedExercise = exerciseCrudService.findById(id);
         Assert.assertNull(deletedExercise);
-        
-        
     }
 }

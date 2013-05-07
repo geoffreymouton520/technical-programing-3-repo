@@ -25,11 +25,11 @@ public class AddExerciseServiceImpl implements AddExerciseService{
     public ExerciseCrudService exerciseCrudService;
     
     @Override
-    public long addExercise(Map<String, String> exerciseValues, MuscleGroup muscleGroup, float caloriesBurned) {
+    public Exercise addExercise(Map<String, String> exerciseValues, MuscleGroup muscleGroup, float caloriesBurned) {
         ExerciseFactory exerciseFactory = ExerciseFactory.getInstance();
         Exercise exercise = exerciseFactory.getExercise(exerciseValues, muscleGroup, caloriesBurned);
         exerciseCrudService.persist(exercise);
-        return exercise.getId();
+        return exercise;
     }
     
 }
