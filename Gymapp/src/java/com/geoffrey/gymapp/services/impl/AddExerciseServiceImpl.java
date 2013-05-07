@@ -10,7 +10,6 @@ import com.geoffrey.gymapp.domain.Exercise;
 import com.geoffrey.gymapp.domain.MuscleGroup;
 import com.geoffrey.gymapp.services.AddExerciseService;
 import com.geoffrey.gymapp.services.crud.ExerciseCrudService;
-import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,7 @@ import org.springframework.stereotype.Service;
 public class AddExerciseServiceImpl implements AddExerciseService{
 
     @Autowired
-    private ExerciseCrudService exerciseCrudService;
+    public ExerciseCrudService exerciseCrudService;
     
     @Override
     public long addExercise(Map<String, String> exerciseValues, MuscleGroup muscleGroup, float caloriesBurned) {
