@@ -4,11 +4,13 @@
  */
 package com.geoffrey.gymapp.test.crud;
 
+import com.geoffrey.gymapp.app.exceptions.ExerciseNullExecption;
 import com.geoffrey.gymapp.app.factory.ExerciseFactory;
 import com.geoffrey.gymapp.domain.Exercise;
 import com.geoffrey.gymapp.domain.MuscleGroup;
 import com.geoffrey.gymapp.services.AddExerciseService;
 import com.geoffrey.gymapp.services.crud.ExerciseCrudService;
+import com.geoffrey.gymapp.services.impl.AddExerciseServiceImpl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,14 +30,12 @@ import org.testng.annotations.Test;
  */
 public class ExerciseTest {
     private static ApplicationContext ctx;
-    
+    private ExerciseCrudService exerciseCrudService;
     private Long id;
     
-    @Autowired
-    private AddExerciseService addExerciseService;
+    //@Autowired
+    private static AddExerciseService addExerciseService;
     
-    @Autowired
-    private ExerciseCrudService exerciseCrudService;
     
     public ExerciseTest() {
     }
@@ -47,8 +47,9 @@ public class ExerciseTest {
     // public void hello() {}
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
-        //ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
+    public void setUpClass() throws Exception {
+        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
+        
     }
 
     @AfterClass
@@ -65,15 +66,18 @@ public class ExerciseTest {
     
     @Test
     public void createExercise() {
+        exerciseCrudService = (ExerciseCrudService) ctx.getBean("exerciseCrudService");
+        addExerciseService = (AddExerciseService) ctx.getBean("addExerciseService");
         Map<String,String> exerciseDetails = new HashMap<String,String>();
         exerciseDetails.put("Description", "Workout your chest.");
         exerciseDetails.put("Equipment", "Dumbbell, Bench");
         exerciseDetails.put("Instructions", "Work your chest");
         exerciseDetails.put("Name", "Dumbbell Bench Press");
         
+        
         id = addExerciseService.addExercise(exerciseDetails, MuscleGroup.CHEST, 50.0f);
-        Exercise exercise = exerciseCrudService.findById(id);
-        Assert.assertNotNull(exercise);
+        Assert.assertNotNull(id);
+        
         
     }
     
