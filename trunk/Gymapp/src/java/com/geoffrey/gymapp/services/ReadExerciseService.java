@@ -8,8 +8,9 @@ import com.geoffrey.gymapp.domain.Exercise;
 
 /**
  *
- * @author geoffrey
+ * @author 211026298
  */
 public interface ReadExerciseService {
-    public Exercise getExerciseByName(String name);
+    public Exercise findById(long id);
+    public Exercise findByName(String Name);
 }
