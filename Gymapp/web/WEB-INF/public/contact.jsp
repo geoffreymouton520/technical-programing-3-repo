@@ -13,7 +13,7 @@
             Exercise
         </div>
         <div id="sidenavigation">
-            <a href="hello.html" class="sidenavigationlink" >Add Exercise</a>
+            <a href="addExercise.html" class="sidenavigationlink" >Add Exercise</a>
             <a href="contacts.html" class="sidenavigationlink" >Add Contact</a>
         </div>
         <div id="content">
