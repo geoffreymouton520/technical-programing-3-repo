@@ -4,17 +4,13 @@
  */
 package com.geoffrey.gymapp.test.crud;
 
-import com.geoffrey.gymapp.app.exceptions.ExerciseNullExecption;
-import com.geoffrey.gymapp.app.factory.ExerciseFactory;
 import com.geoffrey.gymapp.domain.Exercise;
 import com.geoffrey.gymapp.domain.MuscleGroup;
 import com.geoffrey.gymapp.services.AddExerciseService;
 import com.geoffrey.gymapp.services.crud.ExerciseCrudService;
-import com.geoffrey.gymapp.services.impl.AddExerciseServiceImpl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.testng.Assert;
