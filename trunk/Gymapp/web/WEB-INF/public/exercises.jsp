@@ -40,12 +40,12 @@
                     <a class="brand" href="index">Ares Gym</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><a href="index">Home</a></li>
-                            <li><a href="exercises">Exercise</a></li>
+                            <li><a href="index">Home</a></li>
+                            <li class="active"><a href="exercises">Exercise</a></li>
                             <li><a href="persons">Person</a></li>
                             <li><a href="users">User</a></li>
                         </ul>
-                    </div><!--/.nav-collapse -->
+                    </div><
                 </div>
             </div>
         </div>
@@ -56,18 +56,40 @@
                     <div class="well sidebar-nav">
                         <ul class="nav nav-list">
                             <li class="nav-header">Crud</li>
-                            <li class="active"><a href="index">Home</a></li>
+                            <li><a href="index">Home</a></li>
                             <li><a href="addExercise.html">Add Exercise</a></li>
-                            <li><a href="addPerson.html">Add Person</a></li>
-                            <li><a href="addUser.html">Add User</a></li>
-
+                            <li><a href="persons">Add Person</a></li>
+                            <li><a href="users">Add User</a></li>
                         </ul>
                     </div><!--/.well -->
                 </div><!--/span-->
                 <div class="span9">
                     <div class="hero-unit">
-                        <h1>Welcome to Ares Gym</h1>
-                        <p>An online exercise application.</p>
+                        <h2>All Exercises</h2>
+                        <table class="table table-striped">
+                            <thead>
+                            <th>Name</th>
+                            <th>Muscle Group</th>
+                            <th>Description</th>
+                            <th>Equipment</th>
+                            <th>Instructions</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${exercises}" var="exercise">
+                                    <tr>
+                                        <td>${exercise.name}</td>
+                                        <td>${exercise.muscleGroup}</td>
+                                        <td>${exercise.description}</td>
+                                        <td>${exercise.equipment}</td>
+                                        <td>${exercise.instructions}</td>
+                                        <td><a href="editExercise.html">Edit</a></td>
+                                        <td><a href="deleteExercise.html">Delete</a></td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="row-fluid">
                     </div><!--/row-->
