@@ -41,7 +41,7 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li><a href="index">Home</a></li>
-                            <li class="active"><a href="exercises">Exercise</a></li>
+                            <li><a href="exercises">Exercise</a></li>
                             <li><a href="persons">Person</a></li>
                             <li><a href="users">User</a></li>
                         </ul>
@@ -57,8 +57,8 @@
                         <ul class="nav nav-list">
                             <li class="nav-header">Crud</li>
                             <li><a href="">Home</a></li>
-                            <li class="active"><a href="addExercise.html">Add Exercise</a></li>
-                            <li><a href="addPerson.html">Add Person</a></li>
+                            <li><a href="addExercise.html">Add Exercise</a></li>
+                            <li class="active"><a href="addPerson.html">Add Person</a></li>
                             <li><a href="addUser.html">Add User</a></li>
 
                         </ul>
@@ -66,47 +66,31 @@
                 </div><!--/span-->
                 <div class="span9">
                     <div class="hero-unit">
-                        <h2>Exercise Manager</h2>
-                        <form class="form-actions" method="post" action="saveExercise.html">
+                        <h2>Person Manager</h2>
+                        <form class="form-actions" method="post" action="savePerson.html">
                             <table>
                                 <tr>
-                                    <td><label >Calories Burned</label></td>
-                                    <td><input class="input-block-level" name="caloriesBurned"/></td>
+                                    <td><label>First Name</label></td>
+                                    <td><input class="input-block-level" name="firstName"/></td>
                                 </tr>
                                 <tr>
-                                    <td><label >Description</label></td>
-                                    <td><input class="input-block-level"  name="description"/></td>
+                                    <td><label >Middle Name</label></td>
+                                    <td><input class="input-block-level"  name="middleName"/></td>
                                 </tr>
                                 <tr>
-                                    <td><label >Equipment</label></td>
-                                    <td><input class="input-block-level" name="equipment"/></td>
+                                    <td><label >Last Name</label></td>
+                                    <td><input class="input-block-level" name="lastName"/></td>
                                 </tr>
                                 <tr>
-                                    <td><label >Instructions</label></td>
-                                    <td><input class="input-block-level" name="instructions"/></td>
+                                    <td><label >Date Of Birth</label></td>
+                                    <td><input class="input-block-level" name="dateOfBirth"/></td>
                                 </tr>
                                 <tr>
-                                    <td><label >Name</label></td>
-                                    <td><input class="input-block-level" name="name"/></td>
-                                </tr>
-                                <tr>
-                                    <td><label >Muscle Group</label></td>
-                                    <td><input class="input-block-level" name="muscleGroup"/></td>
-                                </tr>
-                                <tr>
-                                    <td><label >Repetitions</label></td>
-                                    <td><input class="input-block-level" name="repitions"/></td>
-                                </tr>
-                                <tr>
-                                    <td><label >Exercise Sets</label></td>
-                                    <td><input class="input-block-level" name="exerciseSets"/></td>
-                                </tr>
-                                <tr>
-                                    <td><label >Weight</label></td>
-                                    <td><input class="input-block-level" name="weight"/></td>
+                                    <td><label >Gender</label></td>
+                                    <td><input class="input-block-level" name="gender"/></td>
                                 </tr>
                                 <td colspan="2">
-                                    <input class="btn" type="submit" value="Add Exercise"/>
+                                    <input class="btn" type="submit" value="Add Person"/>
                                 </td>
                             </table> 
                         </form>

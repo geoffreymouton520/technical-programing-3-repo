@@ -40,10 +40,10 @@
                     <a class="brand" href="index">Ares Gym</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><a href="index">Home</a></li>
+                            <li><a href="index">Home</a></li>
                             <li><a href="exercises">Exercise</a></li>
                             <li><a href="persons">Person</a></li>
-                            <li><a href="users">User</a></li>
+                            <li class="active"><a href="users">User</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
@@ -56,7 +56,7 @@
                     <div class="well sidebar-nav">
                         <ul class="nav nav-list">
                             <li class="nav-header">Crud</li>
-                            <li class="active"><a href="index">Home</a></li>
+                            <li><a href="index">Home</a></li>
                             <li><a href="addExercise.html">Add Exercise</a></li>
                             <li><a href="addPerson.html">Add Person</a></li>
                             <li><a href="addUser.html">Add User</a></li>
@@ -66,8 +66,24 @@
                 </div><!--/span-->
                 <div class="span9">
                     <div class="hero-unit">
-                        <h1>Welcome to Ares Gym</h1>
-                        <p>An online exercise application.</p>
+                        <table class="table table-striped">
+                            <thead>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${users}" var="user">
+                                    <tr>
+                                        <td>${user.userName}</td>
+                                        <td>${user.password}</td>
+                                        <td><a href="editUser.html">Edit</a></td>
+                                        <td><a href="deleteUser.html">Delete</a></td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="row-fluid">
                     </div><!--/row-->

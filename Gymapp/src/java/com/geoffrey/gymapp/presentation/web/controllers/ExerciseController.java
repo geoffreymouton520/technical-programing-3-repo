@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -31,22 +32,43 @@ public class ExerciseController {
     
     
     @RequestMapping(value="/addExercise")
-    public String addContact() {
+    public String addExercise() {
         return "exercise";
         //return new ModelAndView("exercise", "command", new Exercise());
     }
     
     @RequestMapping(value = "/saveExercise", method = RequestMethod.POST)
-    public String saveExecise(Model model, @ModelAttribute("exercise") ExerciseModel exerciseModel){
+    public String saveExercise(Model model, @ModelAttribute("exercise") ExerciseModel exerciseModel){
         ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
         exerciseCrudService = (ExerciseCrudService) ctx.getBean("exerciseCrudService");
         exerciseConvertModelToDomain = (ExerciseConvertModelToDomain) ctx.getBean("exerciseConvertModelToDomain");
         
         Exercise exercise = exerciseConvertModelToDomain.convertToExercise(exerciseModel);
         exerciseCrudService.persist(exercise);
+        return "exercises";
+    }
+    
+    @RequestMapping(value = "/exercises")
+    public String showExercises(Model model){
+        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
+        exerciseCrudService = (ExerciseCrudService) ctx.getBean("exerciseCrudService");
+        exerciseConvertModelToDomain = (ExerciseConvertModelToDomain) ctx.getBean("exerciseConvertModelToDomain");
         
         List<Exercise> exercises = exerciseCrudService.findAll();
         model.addAttribute("exercises", exercises);
-        return "saveExercise";
+        return "exercises";
     }
+    
+    @RequestMapping(value = "/editExercise")
+    public String editExercise(Model model,@RequestParam("exercise") long exerciseId){
+        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
+        exerciseCrudService = (ExerciseCrudService) ctx.getBean("exerciseCrudService");
+        exerciseConvertModelToDomain = (ExerciseConvertModelToDomain) ctx.getBean("exerciseConvertModelToDomain");
+        
+        Exercise exercise = exerciseCrudService.findById(exerciseId);
+        model.addAttribute("exercise", exercise);
+        return "editExercise";
+    }
+    
+    
 }

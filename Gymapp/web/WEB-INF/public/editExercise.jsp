@@ -41,7 +41,7 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li><a href="index">Home</a></li>
-                            <li class="active"><a href="exercises">Exercise</a></li>
+                            <li><a href="exercises">Exercise</a></li>
                             <li><a href="persons">Person</a></li>
                             <li><a href="users">User</a></li>
                         </ul>
@@ -57,21 +57,21 @@
                         <ul class="nav nav-list">
                             <li class="nav-header">Crud</li>
                             <li><a href="">Home</a></li>
-                            <li class="active"><a href="addExercise.html">Add Exercise</a></li>
-                            <li><a href="addPerson.html">Add Person</a></li>
-                            <li><a href="addUser.html">Add User</a></li>
+                            <li><a href="addExercise.html">Add Exercise</a></li>
+                            <li><a href="persons">Person</a></li>
+                            <li><a href="users">User</a></li>
 
                         </ul>
                     </div><!--/.well -->
                 </div><!--/span-->
                 <div class="span9">
                     <div class="hero-unit">
-                        <h2>Exercise Manager</h2>
+                        <h1>Exercise Manager</h1>
                         <form class="form-actions" method="post" action="saveExercise.html">
                             <table>
                                 <tr>
                                     <td><label >Calories Burned</label></td>
-                                    <td><input class="input-block-level" name="caloriesBurned"/></td>
+                                    <td><input class="input-block-level" name="caloriesBurned"/>${exercise.caloriesBurned}</td>
                                 </tr>
                                 <tr>
                                     <td><label >Description</label></td>
