@@ -9,6 +9,7 @@ package com.geoffrey.gymapp.presentation.web.model;
  * @author 211026298
  */
 public class ExerciseModel {
+    private String id;
     private String caloriesBurned;
     private String description;
     private String equipment;
@@ -18,6 +19,14 @@ public class ExerciseModel {
     private String repitions;
     private String exerciseSets;
     private String weight;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getCaloriesBurned() {
         return caloriesBurned;

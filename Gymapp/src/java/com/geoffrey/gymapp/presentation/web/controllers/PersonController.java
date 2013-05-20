@@ -7,10 +7,10 @@ package com.geoffrey.gymapp.presentation.web.controllers;
 import com.geoffrey.gymapp.domain.Person;
 import com.geoffrey.gymapp.presentation.web.model.PersonModel;
 import com.geoffrey.gymapp.services.PersonConvertModelToDomain;
-import com.geoffrey.gymapp.services.crud.PersonCrudService;
+import com.geoffrey.gymapp.services.PersonService;
 import java.util.List;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,51 +24,71 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class PersonController {
-    private ApplicationContext ctx;
-    private PersonCrudService personCrudService;
+    @Autowired
+    @Qualifier("personService")
+    private PersonService personService;
+    
+    @Autowired
+    @Qualifier("personConvertModelToDomain")
     private PersonConvertModelToDomain personConvertModelToDomain;
     
-    
-    
-    
-    @RequestMapping(value="/addPerson")
+    @RequestMapping(value="personadd")
     public String addPerson() {
-        return "person";
-        //return new ModelAndView("person", "command", new Person());
+        return "person/add";
     }
     
-    @RequestMapping(value = "/savePerson", method = RequestMethod.POST)
+    @RequestMapping(value = "personsave", method = RequestMethod.POST)
     public String savePerson(Model model, @ModelAttribute("person") PersonModel personModel){
-        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
-        personCrudService = (PersonCrudService) ctx.getBean("personCrudService");
-        personConvertModelToDomain = (PersonConvertModelToDomain) ctx.getBean("personConvertModelToDomain");
+        //ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
+        //personService = (PersonCrudService) ctx.getBean("personService");
+        //personConvertModelToDomain = (PersonConvertModelToDomain) ctx.getBean("personConvertModelToDomain");
         
         Person person = personConvertModelToDomain.convertToPerson(personModel);
-        personCrudService.persist(person);
-        return "persons";
-    }
-    
-    @RequestMapping(value = "/persons")
-    public String showPersons(Model model){
-        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
-        personCrudService = (PersonCrudService) ctx.getBean("personCrudService");
-        personConvertModelToDomain = (PersonConvertModelToDomain) ctx.getBean("personConvertModelToDomain");
+        personService.addPerson(person);
         
-        List<Person> persons = personCrudService.findAll();
+        List<Person> persons = personService.getPeople();
         model.addAttribute("persons", persons);
-        return "persons";
+        return "person/all";
     }
     
-    @RequestMapping(value = "/editPerson")
-    public String editPerson(Model model,@RequestParam("person") long personId){
-        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
-        personCrudService = (PersonCrudService) ctx.getBean("personCrudService");
-        personConvertModelToDomain = (PersonConvertModelToDomain) ctx.getBean("personConvertModelToDomain");
+    @RequestMapping(value = "personall")
+    public String showPersons(Model model){
+        //ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
+        //personService = (PersonCrudService) ctx.getBean("personService");
+        //personConvertModelToDomain = (PersonConvertModelToDomain) ctx.getBean("personConvertModelToDomain");
         
-        Person person = personCrudService.findById(personId);
-        model.addAttribute("person", person);
-        return "editPerson";
+        List<Person> persons = personService.getPeople();
+        model.addAttribute("persons", persons);
+        return "person/all";
     }
     
+    @RequestMapping(value = "personedit")
+    public String editPerson(Model model,@RequestParam("personID") long personId){
+        //ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
+        //personService = (PersonCrudService) ctx.getBean("personService");
+        //personConvertModelToDomain = (PersonConvertModelToDomain) ctx.getBean("personConvertModelToDomain");
+        
+        Person person = personService.getPersonByID(personId);
+        model.addAttribute("person", person);
+        return "person/edit";
+    }
     
+    @RequestMapping(value = "personupdate")
+    public String updateExercise(Model model,@ModelAttribute("person") PersonModel personModel){
+        Person person = personConvertModelToDomain.convertToPerson(personModel);
+        personService.updatePerson(person);
+        
+        List<Person> persons = personService.getPeople();
+        model.addAttribute("persons", persons);
+        return "person/all";
+    }
+    
+    @RequestMapping(value = "persondelete")
+    public String deleteExercise(Model model,@RequestParam("personID") long personId){
+        personService.deletePerson(personId);
+        
+        List<Person> persons = personService.getPeople();
+        model.addAttribute("persons", persons);
+        return "person/all";
+    }
 }

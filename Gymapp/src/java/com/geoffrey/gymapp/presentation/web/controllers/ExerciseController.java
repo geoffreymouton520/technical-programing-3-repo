@@ -7,10 +7,10 @@ package com.geoffrey.gymapp.presentation.web.controllers;
 import com.geoffrey.gymapp.domain.Exercise;
 import com.geoffrey.gymapp.presentation.web.model.ExerciseModel;
 import com.geoffrey.gymapp.services.ExerciseConvertModelToDomain;
-import com.geoffrey.gymapp.services.crud.ExerciseCrudService;
+import com.geoffrey.gymapp.services.ExerciseServices;
 import java.util.List;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,51 +24,60 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class ExerciseController {
-    private ApplicationContext ctx;
-    private ExerciseCrudService exerciseCrudService;
+    @Autowired
+    @Qualifier("exerciseService")
+    private ExerciseServices exerciseService;
+    
+    @Autowired
+    @Qualifier("exerciseConvertModelToDomain")
     private ExerciseConvertModelToDomain exerciseConvertModelToDomain;
     
-    
-    
-    
-    @RequestMapping(value="/addExercise")
+    @RequestMapping(value="exerciseadd")
     public String addExercise() {
-        return "exercise";
-        //return new ModelAndView("exercise", "command", new Exercise());
+        return "exercise/add";
     }
     
-    @RequestMapping(value = "/saveExercise", method = RequestMethod.POST)
+    @RequestMapping(value = "exercisesave", method = RequestMethod.POST)
     public String saveExercise(Model model, @ModelAttribute("exercise") ExerciseModel exerciseModel){
-        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
-        exerciseCrudService = (ExerciseCrudService) ctx.getBean("exerciseCrudService");
-        exerciseConvertModelToDomain = (ExerciseConvertModelToDomain) ctx.getBean("exerciseConvertModelToDomain");
-        
         Exercise exercise = exerciseConvertModelToDomain.convertToExercise(exerciseModel);
-        exerciseCrudService.persist(exercise);
-        return "exercises";
-    }
-    
-    @RequestMapping(value = "/exercises")
-    public String showExercises(Model model){
-        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
-        exerciseCrudService = (ExerciseCrudService) ctx.getBean("exerciseCrudService");
-        exerciseConvertModelToDomain = (ExerciseConvertModelToDomain) ctx.getBean("exerciseConvertModelToDomain");
+        exerciseService.addExercise(exercise);
         
-        List<Exercise> exercises = exerciseCrudService.findAll();
+        List<Exercise> exercises = exerciseService.getExercises();
         model.addAttribute("exercises", exercises);
-        return "exercises";
+        return "exercise/all";
     }
     
-    @RequestMapping(value = "/editExercise")
-    public String editExercise(Model model,@RequestParam("exercise") long exerciseId){
-        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
-        exerciseCrudService = (ExerciseCrudService) ctx.getBean("exerciseCrudService");
-        exerciseConvertModelToDomain = (ExerciseConvertModelToDomain) ctx.getBean("exerciseConvertModelToDomain");
-        
-        Exercise exercise = exerciseCrudService.findById(exerciseId);
+    @RequestMapping(value = "exerciseall")
+    public String showExercises(Model model){
+        List<Exercise> exercises = exerciseService.getExercises();
+        model.addAttribute("exercises", exercises);
+        return "exercise/all";
+    }
+    
+    @RequestMapping(value = "exerciseedit")
+    public String editExercise(Model model,@RequestParam("exerciseID") long exerciseId){
+        Exercise exercise = exerciseService.getExerciseByID(exerciseId);
         model.addAttribute("exercise", exercise);
-        return "editExercise";
+        return "exercise/edit";
     }
     
     
+    @RequestMapping(value = "exerciseupdate")
+    public String updateExercise(Model model,@ModelAttribute("exercise") ExerciseModel exerciseModel){
+        Exercise exercise = exerciseConvertModelToDomain.convertToExercise(exerciseModel);
+        exerciseService.updateExercise(exercise);
+        
+        List<Exercise> exercises = exerciseService.getExercises();
+        model.addAttribute("exercises", exercises);
+        return "exercise/all";
+    }
+    
+    @RequestMapping(value = "exercisedelete")
+    public String deleteExercise(Model model,@RequestParam("exerciseID") long exerciseId){
+        exerciseService.deleteExercise(exerciseId);
+        
+        List<Exercise> exercises = exerciseService.getExercises();
+        model.addAttribute("exercises", exercises);
+        return "exercise/all";
+    }
 }

@@ -1,8 +1,10 @@
-
+<%@tag description="Overall Page template" pageEncoding="UTF-8"%>
+<%@attribute name="header" fragment="true" %>
+<%@attribute name="footer" fragment="true" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
         <title>Ares Gym</title>
@@ -26,10 +28,10 @@
             }
         </style>
     </head>
-
-    <body>
-
-        <div class="navbar navbar-inverse navbar-fixed-top">
+  <body>
+    <div id="pageheader">
+      <jsp:invoke fragment="header"/>
+      <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
                     <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -40,56 +42,34 @@
                     <a class="brand" href="index">Ares Gym</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li><a href="index">Home</a></li>
-                            <li class="active"><a href="exercises">Exercise</a></li>
-                            <li><a href="persons">Person</a></li>
-                            <li><a href="users">User</a></li>
+                            <li class="active"><a href="index">Home</a></li>
+                            <li><a href="exerciseall">Exercise</a></li>
+                            <li><a href="personall">Person</a></li>
+                            <li><a href="userall">User</a></li>
                         </ul>
-                    </div><
+                    </div><!--/.nav-collapse -->
                 </div>
             </div>
         </div>
-
-        <div class="container-fluid">
+    </div>
+    <div id="body">
+       <div class="container-fluid">
             <div class="row-fluid">
                 <div class="span3">
                     <div class="well sidebar-nav">
                         <ul class="nav nav-list">
                             <li class="nav-header">Crud</li>
-                            <li><a href="index">Home</a></li>
-                            <li><a href="addExercise.html">Add Exercise</a></li>
-                            <li><a href="persons">Add Person</a></li>
-                            <li><a href="users">Add User</a></li>
+                            <li class="active"><a href="index">Home</a></li>
+                            <li><a href="exerciseadd">Add Exercise</a></li>
+                            <li><a href="personadd">Add Person</a></li>
+                            <li><a href="useradd">Add User</a></li>
+
                         </ul>
                     </div><!--/.well -->
                 </div><!--/span-->
                 <div class="span9">
                     <div class="hero-unit">
-                        <h2>All Exercises</h2>
-                        <table class="table table-striped">
-                            <thead>
-                            <th>Name</th>
-                            <th>Muscle Group</th>
-                            <th>Description</th>
-                            <th>Equipment</th>
-                            <th>Instructions</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="${exercises}" var="exercise">
-                                    <tr>
-                                        <td>${exercise.name}</td>
-                                        <td>${exercise.muscleGroup}</td>
-                                        <td>${exercise.description}</td>
-                                        <td>${exercise.equipment}</td>
-                                        <td>${exercise.instructions}</td>
-                                        <td><a href="editExercise.html">Edit</a></td>
-                                        <td><a href="deleteExercise.html">Delete</a></td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
+                        <jsp:doBody/>
                     </div>
                     <div class="row-fluid">
                     </div><!--/row-->
@@ -97,14 +77,12 @@
                     </div><!--/row-->
                 </div><!--/span-->
             </div><!--/row-->
-
-            <hr>
-
-            <footer>
-                <p>&copy; Company 2013</p>
-            </footer>
-
-        </div>
-
-    </body>
+      
+      
+    </div>
+    <div id="pagefooter">
+      <jsp:invoke fragment="footer"/>
+      <p>&copy; Company 2013</p>
+    </div>
+  </body>
 </html>
