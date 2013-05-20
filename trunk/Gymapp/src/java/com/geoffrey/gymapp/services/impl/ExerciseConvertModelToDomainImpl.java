@@ -30,7 +30,9 @@ public class ExerciseConvertModelToDomainImpl implements ExerciseConvertModelToD
         MuscleGroup muscleGroup = MuscleGroup.valueOf(exerciseModel.getMuscleGroup());
         float caloriesBurned = Float.parseFloat(exerciseModel.getCaloriesBurned());
         ExerciseFactory exerciseFactory = ExerciseFactory.getInstance();
-        return exerciseFactory.getExercise(exerciseDetails, muscleGroup, caloriesBurned);
+        Exercise exercise = exerciseFactory.getExercise(exerciseDetails, muscleGroup, caloriesBurned);
+        exercise.setId(Long.parseLong(exerciseModel.getId()));
+        return exercise;
     }
     
 }

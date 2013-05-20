@@ -6,6 +6,7 @@ package com.geoffrey.gymapp.test.crud;
 
 import com.geoffrey.gymapp.domain.Exercise;
 import com.geoffrey.gymapp.domain.MuscleGroup;
+import com.geoffrey.gymapp.services.JPAProcedures;
 import com.geoffrey.gymapp.services.AddExerciseService;
 import com.geoffrey.gymapp.services.crud.ExerciseCrudService;
 import java.util.HashMap;
@@ -58,6 +59,17 @@ public class ExerciseTest {
 
     @AfterMethod
     public void tearDownMethod() throws Exception {
+    }
+    
+    @Test
+    public void testProcedure() {
+        JPAProcedures jPAProcedures = (JPAProcedures)ctx.getBean("procedures");
+        int discPercentage = 0;
+        //jPAProcedures.findDiscount(20, discPercentage);
+        jPAProcedures.createExercise();
+        Assert.assertEquals(discPercentage, 5);
+        
+        
     }
     
     @Test
