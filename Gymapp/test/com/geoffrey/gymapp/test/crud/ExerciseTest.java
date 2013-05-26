@@ -60,7 +60,7 @@ public class ExerciseTest {
     @AfterMethod
     public void tearDownMethod() throws Exception {
     }
-    
+    /*
     @Test
     public void testProcedure() {
         JPAProcedures jPAProcedures = (JPAProcedures)ctx.getBean("procedures");
@@ -70,7 +70,7 @@ public class ExerciseTest {
         Assert.assertEquals(discPercentage, 5);
         
         
-    }
+    }*/
     
     @Test
     public void createExercise() {

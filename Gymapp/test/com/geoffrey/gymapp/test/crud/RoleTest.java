@@ -5,7 +5,7 @@
 package com.geoffrey.gymapp.test.crud;
 
 import com.geoffrey.gymapp.app.factory.RolesFactory;
-import com.geoffrey.gymapp.domain.Roles;
+import com.geoffrey.gymapp.domain.UserRoles;
 import com.geoffrey.gymapp.services.crud.RolesCrudService;
 import java.util.List;
 import org.springframework.context.ApplicationContext;
@@ -57,7 +57,7 @@ public class RoleTest {
         rolesCrudService = (RolesCrudService) ctx.getBean("rolesCrudService");
         RolesFactory rolesFactory = RolesFactory.getInstance();
         
-        Roles roles = rolesFactory.getRole("admin", "Administrator");
+        UserRoles roles = rolesFactory.getRole("ROLE_USER", "user");
         rolesCrudService.persist(roles);
         id = roles.getId();
         Assert.assertNotNull(roles);
@@ -68,7 +68,7 @@ public class RoleTest {
     @Test(dependsOnMethods ="createRoles" )
     public void readRoles() {
         rolesCrudService = (RolesCrudService) ctx.getBean("rolesCrudService");
-        Roles roles = rolesCrudService.findById(id);
+        UserRoles roles = rolesCrudService.findById(id);
         Assert.assertEquals(roles.getDescription(), "Administrator");
         
     }
@@ -76,19 +76,19 @@ public class RoleTest {
     @Test(dependsOnMethods ="readRoles" )
     public void updateRoles() {
         rolesCrudService = (RolesCrudService) ctx.getBean("rolesCrudService");
-        Roles roles = rolesCrudService.findById(id);
+        UserRoles roles = rolesCrudService.findById(id);
         roles.setDescription("Administrate this");
         rolesCrudService.merge(roles);
-        Roles updateRoles = rolesCrudService.findById(id);
+        UserRoles updateRoles = rolesCrudService.findById(id);
         Assert.assertEquals(updateRoles.getDescription(), "Administrate this");
     }
     
     @Test(dependsOnMethods ="updateRoles" )
     public void readRoless() {
         rolesCrudService = (RolesCrudService) ctx.getBean("rolesCrudService");
-        List<Roles> roless = rolesCrudService.findAll();
-        for(Roles roles : roless){
-            System.out.println(roles.getRoleName());
+        List<UserRoles> roless = rolesCrudService.findAll();
+        for(UserRoles roles : roless){
+            System.out.println(roles.getAuthority());
         }
        Assert.assertTrue(roless.size() > 0);
     }
@@ -96,9 +96,9 @@ public class RoleTest {
     @Test(dependsOnMethods ="readRoless" )
     public void deleteRoles() {
         rolesCrudService = (RolesCrudService) ctx.getBean("rolesCrudService");
-        Roles roles = rolesCrudService.findById(id);
+        UserRoles roles = rolesCrudService.findById(id);
         rolesCrudService.remove(roles);
-        Roles deletedRoles = rolesCrudService.findById(id);
+        UserRoles deletedRoles = rolesCrudService.findById(id);
         Assert.assertNull(deletedRoles);
         
         

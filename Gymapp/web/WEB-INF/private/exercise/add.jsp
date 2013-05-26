@@ -1,9 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <t:genericpage>
     <jsp:body>
         <h2>Exercise Manager</h2>
-        <form class="form-actions" method="post" action="exercisesave.html">
+        <form class="form-actions" method="post" action="save.html">
             <table>
                 <tr>
                     <td><label >Calories Burned</label></td>
@@ -27,7 +30,16 @@
                 </tr>
                 <tr>
                     <td><label >Muscle Group</label></td>
-                    <td><input class="input-block-level" name="muscleGroup"/></td>
+                    <td>
+                        <select class="input-block-level" name=muscleGroup">
+                            <option value=""></option>
+                            <c:forEach items="${muscleGroups}" var="option">
+                                <option value="${option}">
+                                    ${option}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td><label >Repetitions</label></td>

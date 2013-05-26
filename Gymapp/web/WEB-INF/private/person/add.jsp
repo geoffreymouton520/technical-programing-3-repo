@@ -6,6 +6,9 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericpage>
     <jsp:body>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
         <h2>Person Manager</h2>
         <form class="form-actions" method="post" action="personsave.html">
             <table>
@@ -23,7 +26,7 @@
                 </tr>
                 <tr>
                     <td><label >Date Of Birth</label></td>
-                    <td><input class="input-block-level" name="dateOfBirth"/></td>
+                    <td><input class="input-block-level date-picker" name="dateOfBirth"/></td>
                 </tr>
                 <tr>
                     <td><label >Gender</label></td>
@@ -34,5 +37,10 @@
                 </td>
             </table> 
         </form>
+        <script>
+            $(function() {
+                $('.date-picker').datepicker({ dateFormat: "dd-mm-yy", firstDay: 1, changeYear: true, yearRange: '1900:+0'});
+            });
+        </script>
     </jsp:body>
 </t:genericpage>
