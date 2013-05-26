@@ -28,8 +28,8 @@ public class Person implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateOfBirth;
+    //@Temporal(javax.persistence.TemporalType.DATE)
+    private String dateOfBirth;
     private String firstName;
     private String lastName;
     private String middleName;
@@ -96,20 +96,21 @@ public class Person implements Serializable {
         this.preferences = preferences;
     }
 
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    
     public Users getUser() {
         return user;
     }
 
     public void setUser(Users user) {
         this.user = user;
-    }
-    
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
     public String getFirstName() {

@@ -26,10 +26,10 @@ public class PersonFactory {
         return personFactory;
     }
     
-    public Person getPerson(Map<String,String> values,Gender gender, Date dateOfBirth){
+    public Person getPerson(Map<String,String> values,Gender gender){
         Person person = new Person();
         
-        person.setDateOfBirth(dateOfBirth);
+        person.setDateOfBirth(values.get("DOB"));
         person.setFirstName(values.get("FirstName"));
         person.setGender(gender);
         person.setLastName(values.get("LastName"));

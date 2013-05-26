@@ -29,7 +29,9 @@ public class Users implements Serializable {
     private String userName;
     @OneToMany
     @JoinColumn(name="user_id")
-    private List<Roles> roles = new ArrayList<Roles>();
+    private List<UserRoles> roles = new ArrayList<UserRoles>();
+    
+    private boolean enabled;
     @OneToOne
     private Person person;
 
@@ -41,11 +43,19 @@ public class Users implements Serializable {
         this.person = person;
     }
     
-    public List<Roles> getRoles() {
+    public List<UserRoles> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Roles> roles) {
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+    
+    public void setRoles(List<UserRoles> roles) {
         this.roles = roles;
     }
     

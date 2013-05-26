@@ -28,61 +28,64 @@
             }
         </style>
     </head>
-  <body>
-    <div id="pageheader">
-      <jsp:invoke fragment="header"/>
-      <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container-fluid">
-                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="brand" href="index">Ares Gym</a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="active"><a href="index">Home</a></li>
-                            <li><a href="exerciseall">Exercise</a></li>
-                            <li><a href="personall">Person</a></li>
-                            <li><a href="userall">User</a></li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
+    <body>
+        <div id="pageheader">
+            <jsp:invoke fragment="header"/>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="brand" href="/Gymapp/index">Ares Gym</a>
+                        <div class="nav-collapse collapse">
+                            <p class="navbar-text pull-right">
+                                Logged in as <a href="#" class="navbar-link">Username</a>
+                            </p>
+                            <ul class="nav">
+                                <li class="active"><a href="/Gymapp/index">Home</a></li>
+                                <li><a href="/Gymapp/private/exercise/all">Exercise</a></li>
+                                <li><a href="/Gymapp/private/person/all">Person</a></li>
+                                <li><a href="/Gymapp/private/user/all">User</a></li>
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="body">
-       <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="span3">
-                    <div class="well sidebar-nav">
-                        <ul class="nav nav-list">
-                            <li class="nav-header">Crud</li>
-                            <li class="active"><a href="index">Home</a></li>
-                            <li><a href="exerciseadd">Add Exercise</a></li>
-                            <li><a href="personadd">Add Person</a></li>
-                            <li><a href="useradd">Add User</a></li>
+        <div id="body">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span3">
+                        <div class="well sidebar-nav">
+                            <ul class="nav nav-list">
+                                <li class="nav-header">Crud</li>
+                                <li class="active"><a href="/Gymapp/index">Home</a></li>
+                                <li><a href="/Gymapp/private/exercise/add">Add Exercise</a></li>
+                                <li><a href="/Gymapp/private/person/add">Add Person</a></li>
+                                <li><a href="/Gymapp/private/user/add">Add User</a></li>
 
-                        </ul>
-                    </div><!--/.well -->
-                </div><!--/span-->
-                <div class="span9">
-                    <div class="hero-unit">
-                        <jsp:doBody/>
-                    </div>
-                    <div class="row-fluid">
-                    </div><!--/row-->
-                    <div class="row-fluid">
-                    </div><!--/row-->
-                </div><!--/span-->
-            </div><!--/row-->
-      
-      
-    </div>
-    <div id="pagefooter">
-      <jsp:invoke fragment="footer"/>
-      <p>&copy; Company 2013</p>
-    </div>
-  </body>
+                            </ul>
+                        </div><!--/.well -->
+                    </div><!--/span-->
+                    <div class="span9">
+                        <div class="hero-unit">
+                            <jsp:doBody/>
+                        </div>
+                        <div class="row-fluid">
+                        </div><!--/row-->
+                        <div class="row-fluid">
+                        </div><!--/row-->
+                    </div><!--/span-->
+                </div><!--/row-->
+
+
+            </div>
+            <div id="pagefooter">
+                <jsp:invoke fragment="footer"/>
+                <p>&copy; Company 2013</p>
+            </div>
+    </body>
 </html>

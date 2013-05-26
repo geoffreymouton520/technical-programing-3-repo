@@ -4,9 +4,13 @@
  */
 package com.geoffrey.gymapp.test.crud;
 
+import com.geoffrey.gymapp.app.factory.RolesFactory;
 import com.geoffrey.gymapp.app.factory.UserFactory;
+import com.geoffrey.gymapp.domain.UserRoles;
 import com.geoffrey.gymapp.domain.Users;
+import com.geoffrey.gymapp.services.crud.RolesCrudService;
 import com.geoffrey.gymapp.services.crud.UserCrudService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -24,6 +28,7 @@ import org.testng.annotations.Test;
 public class UserTest {
     private static ApplicationContext ctx;
     private UserCrudService usersCrudService;
+    private RolesCrudService rolesCrudService;
     private Long id;
     
     public UserTest() {
@@ -57,13 +62,24 @@ public class UserTest {
         usersCrudService = (UserCrudService) ctx.getBean("usersCrudService");
         UserFactory usersFactory = UserFactory.getInstance();
         
-        Users users = usersFactory.getUser("admin", "56803537");
-        usersCrudService.persist(users);
-        id = users.getId();
-        Assert.assertNotNull(users);
+        Users user = usersFactory.getUser("geoffrey", "56803537");
+        rolesCrudService = (RolesCrudService) ctx.getBean("rolesCrudService");
+        RolesFactory rolesFactory = RolesFactory.getInstance();
+        
+        UserRoles role = rolesFactory.getRole("ROLE_USER", "user");
+        rolesCrudService.persist(role);
+        
+        List<UserRoles> userRoles = new ArrayList<UserRoles>();
+        
+        userRoles.add(role);
+        user.setRoles(userRoles);
+        
+        usersCrudService.persist(user);
+        id = user.getId();
+        Assert.assertNotNull(user);
         
     }
-    
+    /*
     
     @Test(dependsOnMethods ="createUsers" )
     public void readUsers() {
@@ -102,5 +118,5 @@ public class UserTest {
         Assert.assertNull(deletedUsers);
         
         
-    }
+    }*/
 }

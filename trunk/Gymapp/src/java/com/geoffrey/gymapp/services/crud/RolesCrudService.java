@@ -4,13 +4,13 @@
  */
 package com.geoffrey.gymapp.services.crud;
 
-import com.geoffrey.gymapp.domain.Roles;
+import com.geoffrey.gymapp.domain.UserRoles;
 import com.geoffrey.gymapp.services.Service;
 
 /**
  *
  * @author geoffrey
  */
-public interface RolesCrudService extends Service<Roles, Long> {
+public interface RolesCrudService extends Service<UserRoles, Long> {
     
 }

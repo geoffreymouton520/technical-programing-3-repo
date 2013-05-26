@@ -9,11 +9,11 @@ import com.geoffrey.gymapp.domain.Gender;
 import com.geoffrey.gymapp.domain.Person;
 import com.geoffrey.gymapp.presentation.web.model.PersonModel;
 import com.geoffrey.gymapp.services.PersonConvertModelToDomain;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,16 +34,18 @@ public class PersonConvertModelToDomainImpl implements PersonConvertModelToDomai
         personDetails.put("FirstName", personModel.getFirstName());
         personDetails.put("LastName", personModel.getLastName());
         personDetails.put("MiddleName", personModel.getMiddleName());
-        
-        Date dateOfBirth = null;
+        personDetails.put("DOB", personModel.getDateOfBirth());
+        /*Date dateOfBirth = null;
+        DateFormat df = new SimpleDateFormat("dd-mm-yy"); 
         try {
-            dateOfBirth = new SimpleDateFormat("y M d", Locale.ENGLISH).parse(personModel.getDateOfBirth());
+            dateOfBirth = (Date)df.parse(personModel.getDateOfBirth());
         } catch (ParseException ex) {
             Logger.getLogger(PersonConvertModelToDomainImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
+            
         Gender gender = Gender.valueOf(personModel.getGender());
         
-        return personFactory.getPerson(personDetails, gender, dateOfBirth);
+        return personFactory.getPerson(personDetails, gender);
     }
     
 }

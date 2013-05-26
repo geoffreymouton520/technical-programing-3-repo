@@ -16,13 +16,13 @@ import javax.persistence.OneToOne;
  * @author geoffrey
  */
 @Entity
-public class Roles implements Serializable {
+public class UserRoles implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String description;
-    private String roleName;
+    private String authority;
     @OneToOne
     private Users user;
 
@@ -41,12 +41,12 @@ public class Roles implements Serializable {
         this.description = description;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public String getAuthority() {
+        return authority;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setAuthority(String roleName) {
+        this.authority = roleName;
     }
     
     
@@ -68,10 +68,10 @@ public class Roles implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Roles)) {
+        if (!(object instanceof UserRoles)) {
             return false;
         }
-        Roles other = (Roles) object;
+        UserRoles other = (UserRoles) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

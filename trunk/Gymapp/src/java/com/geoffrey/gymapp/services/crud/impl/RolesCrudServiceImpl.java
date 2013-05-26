@@ -4,7 +4,7 @@
  */
 package com.geoffrey.gymapp.services.crud.impl;
 
-import com.geoffrey.gymapp.domain.Roles;
+import com.geoffrey.gymapp.domain.UserRoles;
 import com.geoffrey.gymapp.repository.GenericDAO;
 import com.geoffrey.gymapp.services.crud.RolesCrudService;
 import java.util.List;
@@ -21,40 +21,40 @@ import org.springframework.transaction.annotation.Transactional;
 public class RolesCrudServiceImpl implements RolesCrudService{
 
     @Autowired
-    private GenericDAO<Roles> dao;
-    public final void setDAO(final GenericDAO<Roles> dao){
+    private GenericDAO<UserRoles> dao;
+    public final void setDAO(final GenericDAO<UserRoles> dao){
         this.dao = dao;
-        dao.setClazz(Roles.class);
+        dao.setClazz(UserRoles.class);
     }
     public RolesCrudServiceImpl() {
     }
 
     @Override
-    public Roles findById(Long id) {
+    public UserRoles findById(Long id) {
         setDAO(dao);
         return dao.findById(id);
     }
 
     @Override
-    public List<Roles> findAll() {
+    public List<UserRoles> findAll() {
         setDAO(dao);
         return dao.findAll();
     }
 
     @Override
-    public void persist(Roles entity) {
+    public void persist(UserRoles entity) {
         setDAO(dao);
         dao.persist(entity);
     }
 
     @Override
-    public void merge(Roles entity) {
+    public void merge(UserRoles entity) {
         setDAO(dao);
         dao.merge(entity);
     }
 
     @Override
-    public void remove(Roles entity) {
+    public void remove(UserRoles entity) {
         setDAO(dao);
         dao.remove(entity);
     }
@@ -62,12 +62,12 @@ public class RolesCrudServiceImpl implements RolesCrudService{
     @Override
     public void removeById(Long entityId) {
         setDAO(dao);
-        Roles v = findById(entityId);
+        UserRoles v = findById(entityId);
         dao.remove(v);
     }
 
     @Override
-    public List<Roles> findInRange(int firstResult, int maxResults) {
+    public List<UserRoles> findInRange(int firstResult, int maxResults) {
         setDAO(dao);
         return dao.findInRange(firstResult, maxResults);
     }
@@ -79,13 +79,13 @@ public class RolesCrudServiceImpl implements RolesCrudService{
     }
 
     @Override
-    public Roles getByPropertyName(String name, String value) {
+    public UserRoles getByPropertyName(String name, String value) {
         setDAO(dao);
         return dao.getByPropertyName(name, value);
     }
 
     @Override
-    public List<Roles> getEntitiesByProperName(String name, String value) {
+    public List<UserRoles> getEntitiesByProperName(String name, String value) {
         setDAO(dao);
         return dao.getEntitiesByProperName(name, value);
     }

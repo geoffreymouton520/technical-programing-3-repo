@@ -5,7 +5,7 @@
 package com.geoffrey.gymapp.app.factory;
 
 import com.geoffrey.gymapp.domain.BodyStatGoal;
-import com.geoffrey.gymapp.domain.Roles;
+import com.geoffrey.gymapp.domain.UserRoles;
 import com.geoffrey.gymapp.domain.StatGroup;
 
 /**
@@ -25,10 +25,10 @@ public class RolesFactory {
         return rolesFactory;
     }
     
-    public Roles getRole(String roleName, String description){
-        Roles role = new Roles();
+    public UserRoles getRole(String authority, String description){
+        UserRoles role = new UserRoles();
        
-        role.setRoleName(roleName);
+        role.setAuthority(authority);
         role.setDescription(description);
         return role;
     }
