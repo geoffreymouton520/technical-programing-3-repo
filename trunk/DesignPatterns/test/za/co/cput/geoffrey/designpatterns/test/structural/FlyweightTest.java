@@ -31,7 +31,7 @@ public class FlyweightTest {
     public void test() {
         FlyweightFactory flyweightFactory = FlyweightFactory.getInstance();
         
-        List<Integer> anwsers = new ArrayList<>();
+        List<Integer> anwsers = new ArrayList<Integer>();
         anwsers.add(0);
         anwsers.add(0);
         anwsers.add(2);
@@ -43,7 +43,7 @@ public class FlyweightTest {
         anwsers.add(8);
         anwsers.add(16);
         
-        List<Integer> results = new ArrayList<>();
+        List<Integer> results = new ArrayList<Integer>();
         
         for (int i = 0; i < 5; i++) {
             Flyweight flyweightAdder = flyweightFactory.getFlyweight("add");

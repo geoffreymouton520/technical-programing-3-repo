@@ -35,7 +35,7 @@ public class IteratorTest {
         Item i2 = new Item("hamburger", 6.00f);
         Item i3 = new Item("chicken sandwich", 6.50f);
         
-        List<String> listOfItemsToString = new ArrayList<>();
+        List<String> listOfItemsToString = new ArrayList<String>();
         listOfItemsToString.add("spaghetti: $7.5");
         listOfItemsToString.add("hamburger: $6.0");
         listOfItemsToString.add("chicken sandwich: $6.5");

@@ -37,7 +37,7 @@ public class VisitorTest {
         TwoElement two2 = new TwoElement(2, 7);
         ThreeElement three1 = new ThreeElement(3, 4, 5);
 
-        List<NumberElement> numberElements = new ArrayList<>();
+        List<NumberElement> numberElements = new ArrayList<NumberElement>();
         numberElements.add(two1);
         numberElements.add(two2);
         numberElements.add(three1);
