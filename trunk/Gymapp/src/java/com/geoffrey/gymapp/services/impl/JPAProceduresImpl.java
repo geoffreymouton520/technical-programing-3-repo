@@ -27,7 +27,7 @@ public class JPAProceduresImpl implements JPAProcedures{
     @Override
     @Transactional
     public void createExercise() {
-        Query query = em.createNativeQuery("BEGIN ADD_EXERCISE(); END;");
+        Query query = em.createNativeQuery("BEGIN exercise_management.ADD_EXERCISE(); END;");
         query.executeUpdate();  
     }
 
