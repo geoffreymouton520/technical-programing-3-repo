@@ -17,7 +17,7 @@ public class WeatherStation implements WeatherSubject{
     int temperature;
 
     public WeatherStation(int temperature) {
-        weatherObservers = new HashSet<>();
+        weatherObservers = new HashSet<WeatherObserver>();
         this.temperature = temperature;
     }
     

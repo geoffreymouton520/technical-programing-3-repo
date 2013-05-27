@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Composite implements Component{
 
-    List<Component> components = new ArrayList<>();
+    List<Component> components = new ArrayList<Component>();
     
     @Override
     public String sayHello() {

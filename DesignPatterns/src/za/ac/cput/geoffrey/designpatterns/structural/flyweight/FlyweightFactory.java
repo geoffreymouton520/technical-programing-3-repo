@@ -16,7 +16,7 @@ public class FlyweightFactory {
     private Map<String, Flyweight> flyweightPool;
 
     private FlyweightFactory() {
-        flyweightPool = new HashMap<>();
+        flyweightPool = new HashMap<String, Flyweight>();
     }
     
     public static FlyweightFactory getInstance(){

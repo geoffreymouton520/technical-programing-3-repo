@@ -16,7 +16,7 @@ public class Menu {
     List<Item> menuItems;
 
     public Menu() {
-        menuItems = new ArrayList<>();
+        menuItems = new ArrayList<Item>();
     }
     public void addItem(Item item){
         menuItems.add(item);
