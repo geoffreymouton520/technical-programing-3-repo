@@ -60,18 +60,18 @@ public class ExerciseTest {
     @AfterMethod
     public void tearDownMethod() throws Exception {
     }
-    /*
+    
     @Test
     public void testProcedure() {
         JPAProcedures jPAProcedures = (JPAProcedures)ctx.getBean("procedures");
-        int discPercentage = 0;
+        int discPercentage = 5;
         //jPAProcedures.findDiscount(20, discPercentage);
         jPAProcedures.createExercise();
         Assert.assertEquals(discPercentage, 5);
         
         
-    }*/
-    
+    }
+    /*
     @Test
     public void createExercise() {
         exerciseCrudService = (ExerciseCrudService) ctx.getBean("exerciseCrudService");
@@ -126,5 +126,5 @@ public class ExerciseTest {
         exerciseCrudService.remove(exercise);
         Exercise deletedExercise = exerciseCrudService.findById(id);
         Assert.assertNull(deletedExercise);
-    }
+    }*/
 }

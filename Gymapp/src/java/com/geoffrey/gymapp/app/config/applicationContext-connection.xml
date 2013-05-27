@@ -24,7 +24,6 @@
  
     <!-- Activate annotation configured components -->
     <context:annotation-config/>
-
  
     <!-- Scan components for annotations within the configured package -->
     <context:component-scan base-package="com.geoffrey.gymapp">
@@ -62,6 +61,7 @@
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
+    
 </beans>
 
 

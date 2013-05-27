@@ -6,13 +6,10 @@ package com.geoffrey.gymapp.presentation.web.controllers;
 
 import com.geoffrey.gymapp.domain.Exercise;
 import com.geoffrey.gymapp.domain.MuscleGroup;
-import com.geoffrey.gymapp.domain.MuscleGroup;
 import com.geoffrey.gymapp.presentation.web.model.ExerciseModel;
 import com.geoffrey.gymapp.services.ExerciseConvertModelToDomain;
 import com.geoffrey.gymapp.services.ExerciseServices;
-import java.util.Collections;
 import java.util.List;
-import java.util.Vector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;

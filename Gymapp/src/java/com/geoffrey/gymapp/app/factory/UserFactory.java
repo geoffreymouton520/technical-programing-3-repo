@@ -5,6 +5,7 @@
 package com.geoffrey.gymapp.app.factory;
 
 import com.geoffrey.gymapp.domain.Users;
+import com.geoffrey.gymapp.services.impl.PasswordEncryptServiceImpl;
 
 /**
  *
@@ -12,7 +13,6 @@ import com.geoffrey.gymapp.domain.Users;
  */
 public class UserFactory {
     private static UserFactory userFactory;
-
     private UserFactory() {
     }
     
@@ -26,7 +26,8 @@ public class UserFactory {
     public Users getUser(String username, String password){
         Users user = new Users();
         user.setUserName(username);
-        user.setPassword(password);
+        user.setPassword(PasswordEncryptServiceImpl.encrypt(password));
+        user.setEnabled(true);
         return user;
     }
 }

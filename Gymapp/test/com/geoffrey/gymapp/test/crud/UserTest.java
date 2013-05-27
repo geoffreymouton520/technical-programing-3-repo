@@ -8,10 +8,14 @@ import com.geoffrey.gymapp.app.factory.RolesFactory;
 import com.geoffrey.gymapp.app.factory.UserFactory;
 import com.geoffrey.gymapp.domain.UserRoles;
 import com.geoffrey.gymapp.domain.Users;
+import com.geoffrey.gymapp.services.UserRoleService;
+import com.geoffrey.gymapp.services.UserServices;
 import com.geoffrey.gymapp.services.crud.RolesCrudService;
 import com.geoffrey.gymapp.services.crud.UserCrudService;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.testng.Assert;
@@ -30,6 +34,14 @@ public class UserTest {
     private UserCrudService usersCrudService;
     private RolesCrudService rolesCrudService;
     private Long id;
+    
+    @Autowired
+    @Qualifier("userServices")
+    private UserServices userServices;
+    
+    @Autowired
+    @Qualifier("userRoleService")
+    private UserRoleService userRoleServices;
     
     public UserTest() {
     }
@@ -62,19 +74,25 @@ public class UserTest {
         usersCrudService = (UserCrudService) ctx.getBean("usersCrudService");
         UserFactory usersFactory = UserFactory.getInstance();
         
-        Users user = usersFactory.getUser("geoffrey", "56803537");
-        rolesCrudService = (RolesCrudService) ctx.getBean("rolesCrudService");
-        RolesFactory rolesFactory = RolesFactory.getInstance();
+        Users user = usersFactory.getUser("johncash250", "56803537");
+        //rolesCrudService = (RolesCrudService) ctx.getBean("rolesCrudService");
+        //RolesFactory rolesFactory = RolesFactory.getInstance();
         
-        UserRoles role = rolesFactory.getRole("ROLE_USER", "user");
+        //List<UserRoles> userRoles = new ArrayList<UserRoles>();
+        //userRoleServices.addUserRole(userRoles);
+        //user.setRoles(userRoles);
+       // List<UserRoles> userRoles = new ArrayList<UserRoles>();
+        //userRoleServices.addUserRole(userRoles);
+       // user.setRoles(userRoles);
+        usersCrudService.persist(user);
+        
+        /*UserRoles role = rolesFactory.getRole("ROLE_USER", "user");
         rolesCrudService.persist(role);
         
-        List<UserRoles> userRoles = new ArrayList<UserRoles>();
-        
         userRoles.add(role);
-        user.setRoles(userRoles);
+        user.setRoles(userRoles);*/
         
-        usersCrudService.persist(user);
+       // usersCrudService.persist(user);
         id = user.getId();
         Assert.assertNotNull(user);
         
