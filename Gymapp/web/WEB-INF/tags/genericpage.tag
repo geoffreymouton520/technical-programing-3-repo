@@ -58,9 +58,12 @@
                             </c:choose>
                             <ul class="nav">
                                 <li class="active"><a href="/Gymapp/index">Home</a></li>
-                                <li><a href="/Gymapp/private/exercise/all">Exercise</a></li>
                                 <li><a href="/Gymapp/private/person/all">Person</a></li>
                                 <li><a href="/Gymapp/private/user/all">User</a></li>
+                                <li><a href="/Gymapp/private/exercise/all">Exercise</a></li>                           
+                                <li><a href="/Gymapp/private/routines/all">Routines</a></li>
+                                <li><a href="/Gymapp/private/statistics/all">Statistics</a></li>
+                                <li><a href="/Gymapp/private/workout/all">Workout</a></li>
                             </ul>
                         </div><!--/.nav-collapse -->
                     </div>
