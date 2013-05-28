@@ -4,11 +4,13 @@
  */
 package com.geoffrey.gymapp.presentation.web.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author 211026298
  */
-public class PersonModel {
+public class PersonModel implements Serializable{
     private String id;
     private String dateOfBirth;
     private String firstName;

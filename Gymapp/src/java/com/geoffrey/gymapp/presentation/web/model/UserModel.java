@@ -4,11 +4,13 @@
  */
 package com.geoffrey.gymapp.presentation.web.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author 211026298
  */
-public class UserModel {
+public class UserModel implements Serializable{
     private String password;
     private String userName;
 

@@ -81,6 +81,7 @@ public class ExerciseController {
         exerciseConvertModelToDomain = (ExerciseConvertModelToDomain) ctx.getBean("exerciseConvertModelToDomain");
         
         Exercise exercise = exerciseConvertModelToDomain.convertToExercise(exerciseModel);
+        exercise.setId(Long.parseLong(exerciseModel.getId()));
         exerciseService.updateExercise(exercise);
         
         List<Exercise> exercises = exerciseService.getExercises();
