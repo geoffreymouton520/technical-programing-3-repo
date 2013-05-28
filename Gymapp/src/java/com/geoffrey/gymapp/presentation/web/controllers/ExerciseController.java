@@ -9,9 +9,13 @@ import com.geoffrey.gymapp.domain.MuscleGroup;
 import com.geoffrey.gymapp.presentation.web.model.ExerciseModel;
 import com.geoffrey.gymapp.services.ExerciseConvertModelToDomain;
 import com.geoffrey.gymapp.services.ExerciseServices;
+import com.geoffrey.gymapp.services.PersonConvertModelToDomain;
+import com.geoffrey.gymapp.services.PersonService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class ExerciseController {
+    private static ApplicationContext ctx;
     @Autowired
     @Qualifier("exerciseService")
     private ExerciseServices exerciseService;
@@ -41,6 +46,10 @@ public class ExerciseController {
     
     @RequestMapping(value = "private/exercise/save", method = RequestMethod.POST)
     public String saveExercise(Model model, @ModelAttribute("exercise") ExerciseModel exerciseModel){
+        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
+        exerciseService = (ExerciseServices) ctx.getBean("exerciseService");
+        exerciseConvertModelToDomain = (ExerciseConvertModelToDomain) ctx.getBean("exerciseConvertModelToDomain");
+        
         Exercise exercise = exerciseConvertModelToDomain.convertToExercise(exerciseModel);
         exerciseService.addExercise(exercise);
         
@@ -67,6 +76,10 @@ public class ExerciseController {
     
     @RequestMapping(value = "private/exercise/update")
     public String updateExercise(Model model,@ModelAttribute("exercise") ExerciseModel exerciseModel){
+        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
+        exerciseService = (ExerciseServices) ctx.getBean("exerciseService");
+        exerciseConvertModelToDomain = (ExerciseConvertModelToDomain) ctx.getBean("exerciseConvertModelToDomain");
+        
         Exercise exercise = exerciseConvertModelToDomain.convertToExercise(exerciseModel);
         exerciseService.updateExercise(exercise);
         
@@ -77,6 +90,9 @@ public class ExerciseController {
     
     @RequestMapping(value = "private/exercise/delete")
     public String deleteExercise(Model model,@RequestParam("exerciseID") long exerciseId){
+        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
+        exerciseService = (ExerciseServices) ctx.getBean("exerciseService");
+        
         exerciseService.deleteExercise(exerciseId);
         
         List<Exercise> exercises = exerciseService.getExercises();
