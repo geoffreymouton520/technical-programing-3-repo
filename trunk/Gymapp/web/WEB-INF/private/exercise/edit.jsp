@@ -27,7 +27,9 @@
                 </tr>
                 <tr>
                     <td><label >Muscle Group</label></td>
-                    <td><select class="input-block-level" name="muscleGroup">
+                    <td>
+                        <select class="input-block-level" name="muscleGroup">
+                            <option value="">---Select Muscle Group---</option>
                             <c:forEach items="${muscleGroups}" var="option">
                                 <option value="${option}">
                                     ${option}
