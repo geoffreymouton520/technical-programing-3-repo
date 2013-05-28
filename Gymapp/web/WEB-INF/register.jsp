@@ -13,7 +13,7 @@
                     <table>
                         <tr>
                             <td><label>User Name</label></td>
-                            <td><input  required="true" class="input-block-level" /></td>
+                            <td><input  required="true" class="input-block-level" name="userName" /></td>
                         </tr>
                         <tr>
                             <td><label>First Name</label></td>
@@ -46,11 +46,11 @@
                         </tr>
                         <tr>
                             <td><label>Password</label></td>
-                            <td><input type="password"  required="true" class="input-block-level" /></td>
+                            <td><input type="password"  required="true" class="input-block-level" name="password"/></td>
                         </tr>
                         <tr>
                             <td><label for="retype">Retype Password</label></td>
-                            <td><input type="password" required id="retype" class="input-block-level" path="password"/></td>
+                            <td><input type="password" required id="retype" class="input-block-level" /></td>
                         </tr>
                         <tr>
                             <td><input type="submit" value="Register" class="btn-success"/>

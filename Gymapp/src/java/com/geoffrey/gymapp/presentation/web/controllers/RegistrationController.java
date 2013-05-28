@@ -6,10 +6,13 @@ package com.geoffrey.gymapp.presentation.web.controllers;
 
 import com.geoffrey.gymapp.domain.Gender;
 import com.geoffrey.gymapp.domain.MuscleGroup;
+import com.geoffrey.gymapp.domain.Person;
 import com.geoffrey.gymapp.domain.UserRoles;
 import com.geoffrey.gymapp.domain.Users;
 import com.geoffrey.gymapp.presentation.web.model.RegistrationModel;
 import com.geoffrey.gymapp.presentation.web.model.UserModel;
+import com.geoffrey.gymapp.services.PersonConvertModelToDomain;
+import com.geoffrey.gymapp.services.PersonService;
 import com.geoffrey.gymapp.services.UserConvertModelToDomain;
 import com.geoffrey.gymapp.services.UserRoleService;
 import com.geoffrey.gymapp.services.UserServices;
@@ -36,20 +39,28 @@ public class RegistrationController {
     private UserServices userServices;
     private UserRoleService userRoleServices;
     private UserConvertModelToDomain userConvertModelToDomain;
+    private PersonService personService;
+    private PersonConvertModelToDomain personConvertModelToDomain;
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String RegisterUser(Model model, @ModelAttribute("user") UserModel userModel){
+    public String RegisterUser(Model model, @ModelAttribute("user") RegistrationModel registrationModel){
         ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
         userServices = (UserServices) ctx.getBean("userServices");
         userConvertModelToDomain = (UserConvertModelToDomain) ctx.getBean("userConvertModelToDomain");
         userRoleServices = (UserRoleService) ctx.getBean("userRoleService");
+        personService = (PersonService) ctx.getBean("personService");
+        personConvertModelToDomain = (PersonConvertModelToDomain) ctx.getBean("personConvertModelToDomain");
         
-        Users user = userConvertModelToDomain.convertToUser(userModel);
-        
+        Users user = userConvertModelToDomain.convertToUser(registrationModel);
         List<UserRoles> userRoles = new ArrayList<UserRoles>();
         userRoleServices.addUserRole(userRoles);
         user.setRoles(userRoles);
         userServices.addUser(user);
+        
+        Person person = personConvertModelToDomain.convertToPerson(registrationModel);
+        person.setUser(user);
+        personService.addPerson(person);
+        
         return "index";
     }
     
