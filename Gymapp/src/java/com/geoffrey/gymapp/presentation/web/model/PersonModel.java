@@ -9,12 +9,22 @@ package com.geoffrey.gymapp.presentation.web.model;
  * @author 211026298
  */
 public class PersonModel {
+    private String id;
     private String dateOfBirth;
     private String firstName;
     private String lastName;
     private String middleName;
     private String gender;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    
     public String getDateOfBirth() {
         return dateOfBirth;
     }

@@ -1,9 +1,16 @@
+
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericpage>
     <jsp:body>
-        <h2>Exercise Manager</h2>
-        <form class="form-actions" method="post" action="personupdate">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+        <h2>Person Manager</h2>
+        <form class="form-actions" method="post" action="update.html">
             <table>
                 <tr>
                     <td><label>First Name</label></td>
@@ -19,7 +26,7 @@
                 </tr>
                 <tr>
                     <td><label >Date Of Birth</label></td>
-                    <td><input class="input-block-level" name="dateOfBirth" value="${person.dateOfBirth}"/></td>
+                    <td><input class="input-block-level date-picker" name="dateOfBirth" value="${person.dateOfBirth}"/></td>
                 </tr>
                 <tr>
                     <td><label >Gender</label></td>
@@ -30,6 +37,11 @@
                     <input class="btn" type="submit" value="Update Person"/>
                 </td>
             </table> 
-        </form> 
+        </form>
+        <script>
+            $(function() {
+                $('.date-picker').datepicker({ dateFormat: "dd-mm-yy", firstDay: 1, changeYear: true, yearRange: '1900:+0'});
+            });
+        </script>
     </jsp:body>
 </t:genericpage>
