@@ -4,11 +4,13 @@
  */
 package com.geoffrey.gymapp.presentation.web.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author 211026298
  */
-public class ExerciseModel {
+public class ExerciseModel implements Serializable{
     private String id;
     private String caloriesBurned;
     private String description;

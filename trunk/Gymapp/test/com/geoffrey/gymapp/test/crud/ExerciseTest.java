@@ -71,7 +71,7 @@ public class ExerciseTest {
         
         
     }
-    /*
+    
     @Test
     public void createExercise() {
         exerciseCrudService = (ExerciseCrudService) ctx.getBean("exerciseCrudService");
@@ -126,5 +126,5 @@ public class ExerciseTest {
         exerciseCrudService.remove(exercise);
         Exercise deletedExercise = exerciseCrudService.findById(id);
         Assert.assertNull(deletedExercise);
-    }*/
+    }
 }

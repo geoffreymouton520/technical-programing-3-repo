@@ -23,7 +23,14 @@ public class ExerciseServicesImpl implements ExerciseServices{
     
     @Override
     public void updateExercise(Exercise exercise) {
-        exerciseCrudService.merge(exercise);
+        Exercise currentExercise = exerciseCrudService.findById(exercise.getId());
+        currentExercise.setCaloriesBurned(exercise.getCaloriesBurned());
+        currentExercise.setMuscleGroup(exercise.getMuscleGroup());
+        currentExercise.setDescription(exercise.getDescription());
+        currentExercise.setEquipment(exercise.getEquipment());
+        currentExercise.setInstructions(exercise.getInstructions());
+        currentExercise.setName(exercise.getName());
+        exerciseCrudService.merge(currentExercise);
     }
 
     @Override

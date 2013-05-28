@@ -4,6 +4,7 @@
  */
 package com.geoffrey.gymapp.services.impl;
 
+import com.geoffrey.gymapp.domain.Exercise;
 import com.geoffrey.gymapp.domain.Person;
 import com.geoffrey.gymapp.services.PersonService;
 import com.geoffrey.gymapp.services.crud.PersonCrudService;
@@ -23,7 +24,13 @@ public class PersonServiceImpl implements PersonService{
     
     @Override
     public void updatePerson(Person person) {
-        personCrudService.merge(person);
+        Person currentPerson = personCrudService.findById(person.getId());
+        currentPerson.setDateOfBirth(person.getDateOfBirth());
+        currentPerson.setFirstName(person.getFirstName());
+        currentPerson.setGender(person.getGender());
+        currentPerson.setLastName(person.getLastName());
+        currentPerson.setMiddleName(person.getMiddleName());
+        personCrudService.merge(currentPerson);
     }
 
     @Override
