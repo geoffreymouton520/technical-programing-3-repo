@@ -6,6 +6,7 @@ package com.geoffrey.gymapp.services;
 
 import com.geoffrey.gymapp.domain.Person;
 import com.geoffrey.gymapp.presentation.web.model.PersonModel;
+import com.geoffrey.gymapp.presentation.web.model.RegistrationModel;
 
 /**
  *
@@ -13,4 +14,5 @@ import com.geoffrey.gymapp.presentation.web.model.PersonModel;
  */
 public interface PersonConvertModelToDomain {
     public Person convertToPerson(PersonModel personModel);
+    public Person convertToPerson(RegistrationModel registrationModel);
 }
