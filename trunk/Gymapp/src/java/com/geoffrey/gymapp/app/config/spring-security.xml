@@ -6,7 +6,7 @@
                     http://www.springframework.org/schema/security 
                     http://www.springframework.org/schema/security/spring-security-3.1.xsd">
  
-	<http auto-config="true">
+	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/private/exercise/**" access="ROLE_USER" />
                 <intercept-url pattern="/private/routines/**" access="ROLE_USER" />
                 <intercept-url pattern="/private/statics/**" access="ROLE_USER" />
@@ -20,7 +20,7 @@
         
         <authentication-manager>
 	   <authentication-provider>
-               <password-encoder hash="md5"/>
+              <password-encoder hash="md5"/>
 		<jdbc-user-service data-source-ref="dataSource"
  
 		   users-by-username-query="

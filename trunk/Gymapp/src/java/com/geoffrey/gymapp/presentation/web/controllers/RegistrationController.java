@@ -4,8 +4,11 @@
  */
 package com.geoffrey.gymapp.presentation.web.controllers;
 
+import com.geoffrey.gymapp.domain.Gender;
+import com.geoffrey.gymapp.domain.MuscleGroup;
 import com.geoffrey.gymapp.domain.UserRoles;
 import com.geoffrey.gymapp.domain.Users;
+import com.geoffrey.gymapp.presentation.web.model.RegistrationModel;
 import com.geoffrey.gymapp.presentation.web.model.UserModel;
 import com.geoffrey.gymapp.services.UserConvertModelToDomain;
 import com.geoffrey.gymapp.services.UserRoleService;
@@ -52,6 +55,7 @@ public class RegistrationController {
     
     @RequestMapping(value = "/register")
     public String RegisterForm(Model model){
+        model.addAttribute("genders", Gender.values());
         return "register";
     }
 }

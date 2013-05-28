@@ -1,4 +1,5 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
+
 <%@attribute name="header" fragment="true" %>
 <%@attribute name="footer" fragment="true" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
@@ -57,7 +58,6 @@
                                 </c:otherwise>
                             </c:choose>
                             <ul class="nav">
-
                                 <li class="active"><a href="/Gymapp/index">Home</a></li>
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                                     <li><a href="/Gymapp/private/person/all">Person</a></li>
@@ -68,7 +68,7 @@
                                 <li><a href="/Gymapp/private/statistics/all">Statistics</a></li>
                                 <li><a href="/Gymapp/private/workout/all">Workout</a></li>
                             </ul>
-                        </div><!--/.nav-collapse -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,10 +81,12 @@
                             <ul class="nav nav-list">
                                 <li class="nav-header">Crud</li>
                                 <li class="active"><a href="/Gymapp/index">Home</a></li>
+                                <http use-expressions="true">
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                    <li><a href="/Gymapp/private/person/add">Add Person</a></li>
-                                    <li><a href="/Gymapp/private/user/add">Add User</a></li>
-                                    </sec:authorize>
+                                        <li><a href="/Gymapp/private/person/add">Add Person</a></li>
+                                        <li><a href="/Gymapp/private/user/add">Add User</a></li>
+                                        </sec:authorize>
+                                </http>
                                 <li><a href="/Gymapp/private/exercise/add">Add Exercise</a></li>
                                 <li><a href="/Gymapp/private/routines/add">Add Routine</a></li>
                                 <li><a href="/Gymapp/private/statistics/add">Add Statistics</a></li>
