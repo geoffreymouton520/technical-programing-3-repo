@@ -3,7 +3,7 @@
 <t:genericpage>
     <jsp:body>
         <h2>Exercise Manager</h2>
-        <form class="form-actions" method="post" action="exerciseupdate.html">
+        <form class="form-actions" method="post" action="update.html">
             <table>
                 <tr>
                     <td><label >Calories Burned</label></td>
@@ -27,7 +27,14 @@
                 </tr>
                 <tr>
                     <td><label >Muscle Group</label></td>
-                    <td><input class="input-block-level" name="muscleGroup" value="${exercise.muscleGroup}"/></td>
+                    <td><select class="input-block-level" name="muscleGroup">
+                            <c:forEach items="${muscleGroups}" var="option">
+                                <option value="${option}">
+                                    ${option}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td><label >Repetitions</label></td>

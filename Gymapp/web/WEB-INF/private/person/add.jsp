@@ -10,7 +10,7 @@
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
         <h2>Person Manager</h2>
-        <form class="form-actions" method="post" action="personsave.html">
+        <form class="form-actions" method="post" action="save.html">
             <table>
                 <tr>
                     <td><label>First Name</label></td>

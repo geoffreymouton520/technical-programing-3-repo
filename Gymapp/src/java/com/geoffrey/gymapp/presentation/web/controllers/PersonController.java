@@ -32,12 +32,12 @@ public class PersonController {
     @Qualifier("personConvertModelToDomain")
     private PersonConvertModelToDomain personConvertModelToDomain;
     
-    @RequestMapping(value="personadd")
+    @RequestMapping(value="private/person/add")
     public String addPerson() {
-        return "person/add";
+        return "private/person/add";
     }
     
-    @RequestMapping(value = "personsave", method = RequestMethod.POST)
+    @RequestMapping(value = "private/person/save", method = RequestMethod.POST)
     public String savePerson(Model model, @ModelAttribute("person") PersonModel personModel){
         //ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
         //personService = (PersonCrudService) ctx.getBean("personService");
@@ -48,10 +48,10 @@ public class PersonController {
         
         List<Person> persons = personService.getPeople();
         model.addAttribute("persons", persons);
-        return "person/all";
+        return "private/person/all";
     }
     
-    @RequestMapping(value = "personall")
+    @RequestMapping(value = "private/person/all")
     public String showPersons(Model model){
         //ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
         //personService = (PersonCrudService) ctx.getBean("personService");
@@ -59,10 +59,10 @@ public class PersonController {
         
         List<Person> persons = personService.getPeople();
         model.addAttribute("persons", persons);
-        return "person/all";
+        return "private/person/all";
     }
     
-    @RequestMapping(value = "personedit")
+    @RequestMapping(value = "private/person/edit")
     public String editPerson(Model model,@RequestParam("personID") long personId){
         //ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
         //personService = (PersonCrudService) ctx.getBean("personService");
@@ -70,25 +70,25 @@ public class PersonController {
         
         Person person = personService.getPersonByID(personId);
         model.addAttribute("person", person);
-        return "person/edit";
+        return "private/person/edit";
     }
     
-    @RequestMapping(value = "personupdate")
+    @RequestMapping(value = "private/person/update")
     public String updateExercise(Model model,@ModelAttribute("person") PersonModel personModel){
         Person person = personConvertModelToDomain.convertToPerson(personModel);
         personService.updatePerson(person);
         
         List<Person> persons = personService.getPeople();
         model.addAttribute("persons", persons);
-        return "person/all";
+        return "private/person/all";
     }
     
-    @RequestMapping(value = "persondelete")
+    @RequestMapping(value = "private/person/delete")
     public String deleteExercise(Model model,@RequestParam("personID") long personId){
         personService.deletePerson(personId);
         
         List<Person> persons = personService.getPeople();
         model.addAttribute("persons", persons);
-        return "person/all";
+        return "private/person/all";
     }
 }

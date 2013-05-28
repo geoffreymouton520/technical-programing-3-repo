@@ -35,13 +35,6 @@ public class PersonConvertModelToDomainImpl implements PersonConvertModelToDomai
         personDetails.put("LastName", personModel.getLastName());
         personDetails.put("MiddleName", personModel.getMiddleName());
         personDetails.put("DOB", personModel.getDateOfBirth());
-        /*Date dateOfBirth = null;
-        DateFormat df = new SimpleDateFormat("dd-mm-yy"); 
-        try {
-            dateOfBirth = (Date)df.parse(personModel.getDateOfBirth());
-        } catch (ParseException ex) {
-            Logger.getLogger(PersonConvertModelToDomainImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
             
         Gender gender = Gender.valueOf(personModel.getGender());
         
