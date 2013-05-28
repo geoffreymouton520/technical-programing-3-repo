@@ -24,8 +24,8 @@
                         <td>${person.lastName}</td>
                         <td>${person.dateOfBirth}</td>
                         <td>${person.gender}</td>
-                        <td><a href="personedit?personID=${person.id}">Edit</a></td>
-                        <td><a href="persondelete?personID=${person.id}">Delete</a></td>
+                        <td><a href="/Gymapp/private/person/edit?personID=${person.id}">Edit</a></td>
+                        <td><a href="/Gymapp/private/person/delete?personID=${person.id}">Delete</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

@@ -60,6 +60,7 @@ public class ExerciseController {
     public String editExercise(Model model,@RequestParam("exerciseID") long exerciseId){
         Exercise exercise = exerciseService.getExerciseByID(exerciseId);
         model.addAttribute("exercise", exercise);
+        model.addAttribute("muscleGroups", MuscleGroup.values());
         return "/private/exercise/edit";
     }
     

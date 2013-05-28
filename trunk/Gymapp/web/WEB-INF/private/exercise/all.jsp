@@ -24,8 +24,8 @@
                     <td>${exercise.description}</td>
                     <td>${exercise.equipment}</td>
                     <td>${exercise.instructions}</td>
-                    <td><a href="exerciseedit?exerciseID=${exercise.id}">Edit</a></td>
-                    <td><a href="exercisedelete?exerciseID=${exercise.id}">Delete</a></td>
+                    <td><a href="/Gymapp/private/exercise/edit?exerciseID=${exercise.id}">Edit</a></td>
+                    <td><a href="/Gymapp/private/exercise/delete?exerciseID=${exercise.id}">Delete</a></td>
                 </tr>
             </c:forEach>
         </tbody>

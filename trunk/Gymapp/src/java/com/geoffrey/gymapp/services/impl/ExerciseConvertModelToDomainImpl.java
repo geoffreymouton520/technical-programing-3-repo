@@ -31,7 +31,6 @@ public class ExerciseConvertModelToDomainImpl implements ExerciseConvertModelToD
         float caloriesBurned = Float.parseFloat(exerciseModel.getCaloriesBurned());
         ExerciseFactory exerciseFactory = ExerciseFactory.getInstance();
         Exercise exercise = exerciseFactory.getExercise(exerciseDetails, muscleGroup, caloriesBurned);
-        exercise.setId(Long.parseLong(exerciseModel.getId()));
         return exercise;
     }
     
