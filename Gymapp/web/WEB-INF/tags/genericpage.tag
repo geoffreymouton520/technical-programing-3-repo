@@ -57,9 +57,12 @@
                                 </c:otherwise>
                             </c:choose>
                             <ul class="nav">
+
                                 <li class="active"><a href="/Gymapp/index">Home</a></li>
-                                <li><a href="/Gymapp/private/person/all">Person</a></li>
-                                <li><a href="/Gymapp/private/user/all">User</a></li>
+                                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                    <li><a href="/Gymapp/private/person/all">Person</a></li>
+                                    <li><a href="/Gymapp/private/user/all">User</a></li>
+                                    </sec:authorize>
                                 <li><a href="/Gymapp/private/exercise/all">Exercise</a></li>                           
                                 <li><a href="/Gymapp/private/routines/all">Routines</a></li>
                                 <li><a href="/Gymapp/private/statistics/all">Statistics</a></li>
@@ -78,10 +81,14 @@
                             <ul class="nav nav-list">
                                 <li class="nav-header">Crud</li>
                                 <li class="active"><a href="/Gymapp/index">Home</a></li>
+                                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                    <li><a href="/Gymapp/private/person/add">Add Person</a></li>
+                                    <li><a href="/Gymapp/private/user/add">Add User</a></li>
+                                    </sec:authorize>
                                 <li><a href="/Gymapp/private/exercise/add">Add Exercise</a></li>
-                                <li><a href="/Gymapp/private/person/add">Add Person</a></li>
-                                <li><a href="/Gymapp/private/user/add">Add User</a></li>
-
+                                <li><a href="/Gymapp/private/routines/add">Add Routine</a></li>
+                                <li><a href="/Gymapp/private/statistics/add">Add Statistics</a></li>
+                                <li><a href="/Gymapp/private/workout/add">Add Workout</a></li>
                             </ul>
                         </div><!--/.well -->
                     </div><!--/span-->
