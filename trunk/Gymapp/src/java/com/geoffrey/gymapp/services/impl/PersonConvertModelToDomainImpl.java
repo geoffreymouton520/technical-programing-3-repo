@@ -8,7 +8,7 @@ import com.geoffrey.gymapp.app.factory.PersonFactory;
 import com.geoffrey.gymapp.domain.Gender;
 import com.geoffrey.gymapp.domain.Person;
 import com.geoffrey.gymapp.presentation.web.model.PersonModel;
-import com.geoffrey.gymapp.presentation.web.model.RegistrationModel;
+import com.geoffrey.gymapp.presentation.web.model.ProfileModel;
 import com.geoffrey.gymapp.services.PersonConvertModelToDomain;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -43,7 +43,7 @@ public class PersonConvertModelToDomainImpl implements PersonConvertModelToDomai
     }
 
     @Override
-    public Person convertToPerson(RegistrationModel registrationModel) {
+    public Person convertToPerson(ProfileModel registrationModel) {
         PersonFactory personFactory = PersonFactory.getInstance();
         
         Map<String,String> personDetails = new HashMap<String,String>();

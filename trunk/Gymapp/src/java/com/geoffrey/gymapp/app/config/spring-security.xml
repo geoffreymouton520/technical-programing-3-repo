@@ -7,12 +7,13 @@
                     http://www.springframework.org/schema/security/spring-security-3.1.xsd">
  
 	<http auto-config="true" use-expressions="true">
-		<intercept-url pattern="/private/exercise/**" access="ROLE_USER" />
-                <intercept-url pattern="/private/routines/**" access="ROLE_USER" />
-                <intercept-url pattern="/private/statics/**" access="ROLE_USER" />
-                <intercept-url pattern="/private/workout/**" access="ROLE_USER" />
-                <intercept-url pattern="/private/person/**" access="ROLE_ADMIN" />
-                <intercept-url pattern="/private/user/**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/private/exercise/**" access="hasRole('ROLE_USER')" />
+                <intercept-url pattern="/private/routines/**" access="hasRole('ROLE_USER')" />
+                <intercept-url pattern="/private/statics/**" access="hasRole('ROLE_USER')" />
+                <intercept-url pattern="/private/workout/**" access="hasRole('ROLE_USER')" />
+                <intercept-url pattern="/private/profile/**" access="hasRole('ROLE_USER')" />
+                <intercept-url pattern="/private/person/**" access="hasRole('ROLE_ADMIN')" />
+                <intercept-url pattern="/private/user/**" access="hasRole('ROLE_ADMIN')" />
                 <form-login login-page="/login" default-target-url="/private"
 			authentication-failure-url="/loginfailed" />
 		<logout logout-success-url="/logout" />

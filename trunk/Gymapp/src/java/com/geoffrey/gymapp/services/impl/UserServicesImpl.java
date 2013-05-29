@@ -23,13 +23,18 @@ public class UserServicesImpl implements UserServices{
     
     @Override
     public void updateUser(Users user) {
-        userCrudService.merge(user);
+        Users currentUser = userCrudService.findById(user.getId());
+        currentUser.setUserName(user.getUserName());
+        currentUser.setPassword(user.getPassword());
+        currentUser.setEnabled(user.isEnabled());
+        currentUser.setPerson(user.getPerson());
+        currentUser.setRoles(user.getRoles());
+        userCrudService.merge(currentUser);
     }
 
     @Override
     public List<Users> getUsers() {
         List<Users> users = userCrudService.findAll();
-        
         return users;
     }
 
