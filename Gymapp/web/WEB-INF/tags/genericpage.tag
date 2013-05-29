@@ -67,6 +67,8 @@
                                 <li><a href="/Gymapp/private/routines/all">Routines</a></li>
                                 <li><a href="/Gymapp/private/statistics/all">Statistics</a></li>
                                 <li><a href="/Gymapp/private/workout/all">Workout</a></li>
+                                <li><a href="/Gymapp/private/preferences/all">Preferences</a></li>
+                                <li><a href="/Gymapp/private/goals/all">Goals</a></li>
                             </ul>
                         </div>
                     </div>
@@ -91,6 +93,8 @@
                                 <li><a href="/Gymapp/private/routines/add">Add Routine</a></li>
                                 <li><a href="/Gymapp/private/statistics/add">Add Statistics</a></li>
                                 <li><a href="/Gymapp/private/workout/add">Add Workout</a></li>
+                                <li><a href="/Gymapp/private/preferences/add">Add Preferences</a></li>
+                                <li><a href="/Gymapp/private/goals/add">Add Goals</a></li>
                             </ul>
                         </div><!--/.well -->
                     </div><!--/span-->
