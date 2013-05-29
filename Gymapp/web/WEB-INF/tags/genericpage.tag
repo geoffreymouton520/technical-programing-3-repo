@@ -11,6 +11,7 @@
         <meta charset="utf-8">
         <title>Ares Gym</title>
         <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />" />
+        <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap-responsive.min.css" />" />
         <style type="text/css">
             body {
                 padding-top: 60px;
@@ -46,7 +47,7 @@
                             <c:choose>
                                 <c:when test="${pageContext.request.userPrincipal.authenticated}">
                                     <p class="navbar-text pull-right">
-                                        <a href="/Gymapp/"> <c:out value="${pageContext.request.userPrincipal.name}"/></a>
+                                        <a href="/Gymapp/private/profile/view"> <c:out value="${pageContext.request.userPrincipal.name}"/></a>
                                         <a href="<c:url value="/j_spring_security_logout" />">Logout <c:out value="${SPRING_SECURITY_LAST_USERNAME}"/></a>
                                     </p>
                                 </c:when>

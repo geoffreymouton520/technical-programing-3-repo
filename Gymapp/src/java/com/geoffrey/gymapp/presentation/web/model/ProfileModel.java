@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author geoffrey
  */
-public class RegistrationModel implements Serializable {
+public class ProfileModel implements Serializable {
 
     private String userID;
     private String password;

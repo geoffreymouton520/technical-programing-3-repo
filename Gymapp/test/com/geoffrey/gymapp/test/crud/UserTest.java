@@ -71,8 +71,11 @@ public class UserTest {
     
     @Test
     public void createUsers() {
+        
         usersCrudService = (UserCrudService) ctx.getBean("usersCrudService");
-        UserFactory usersFactory = UserFactory.getInstance();
+        Users user = usersCrudService.getByPropertyName("userName", "johncash250");
+        Assert.assertNotNull(user);
+        /*UserFactory usersFactory = UserFactory.getInstance();
         
         Users user = usersFactory.getUser("johncash250", "56803537");
         //rolesCrudService = (RolesCrudService) ctx.getBean("rolesCrudService");
@@ -93,8 +96,8 @@ public class UserTest {
         user.setRoles(userRoles);*/
         
        // usersCrudService.persist(user);
-        id = user.getId();
-        Assert.assertNotNull(user);
+        /*id = user.getId();
+        Assert.assertNotNull(user);*/
         
     }
     /*

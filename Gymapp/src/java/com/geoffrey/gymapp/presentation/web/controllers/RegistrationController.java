@@ -9,7 +9,7 @@ import com.geoffrey.gymapp.domain.MuscleGroup;
 import com.geoffrey.gymapp.domain.Person;
 import com.geoffrey.gymapp.domain.UserRoles;
 import com.geoffrey.gymapp.domain.Users;
-import com.geoffrey.gymapp.presentation.web.model.RegistrationModel;
+import com.geoffrey.gymapp.presentation.web.model.ProfileModel;
 import com.geoffrey.gymapp.presentation.web.model.UserModel;
 import com.geoffrey.gymapp.services.PersonConvertModelToDomain;
 import com.geoffrey.gymapp.services.PersonService;
@@ -43,7 +43,7 @@ public class RegistrationController {
     private PersonConvertModelToDomain personConvertModelToDomain;
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String RegisterUser(Model model, @ModelAttribute("user") RegistrationModel registrationModel){
+    public String RegisterUser(Model model, @ModelAttribute("user") ProfileModel registrationModel){
         ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
         userServices = (UserServices) ctx.getBean("userServices");
         userConvertModelToDomain = (UserConvertModelToDomain) ctx.getBean("userConvertModelToDomain");
@@ -61,6 +61,9 @@ public class RegistrationController {
         person.setUser(user);
         personService.addPerson(person);
         
+        user.setPerson(person);
+        
+        userServices.updateUser(user);
         return "index";
     }
     
