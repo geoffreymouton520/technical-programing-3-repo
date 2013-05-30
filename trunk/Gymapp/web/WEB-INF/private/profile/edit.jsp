@@ -9,7 +9,7 @@
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
         <div class="well"> 
-            <form class="form-horizontal" method="post" action="edit.html">
+            <form class="form-horizontal" method="post" action="update.html">
                 <legend>Register</legend>
                 <table>
                     <tr>
@@ -18,7 +18,7 @@
                             <div class="controls">
                                 <div class="input-prepend">
                                     <span class="add-on"><i class="icon-user"></i></span>
-                                    <input type="text" class="input-xlarge" name="userName" value="${profile.userName}" >
+                                    <input type="text" class="input-xlarge" name="userName" value="${profile.userName}"  enabled="false">
                                 </div>
                             </div>
                         </td>

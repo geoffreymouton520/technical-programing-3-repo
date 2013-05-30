@@ -12,6 +12,14 @@
         <title>Ares Gym</title>
         <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />" />
         <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap-responsive.min.css" />" />
+        <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+        <script type='text/javascript' src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+        <script>
+
+            $('.dropdown-toggle').dropdown();
+
+
+        </script>
         <style type="text/css">
             body {
                 padding-top: 60px;
@@ -46,10 +54,18 @@
                         <div class="nav-collapse collapse">
                             <c:choose>
                                 <c:when test="${pageContext.request.userPrincipal.authenticated}">
-                                    <p class="navbar-text pull-right">
-                                        <a href="/Gymapp/private/profile/view"> <c:out value="${pageContext.request.userPrincipal.name}"/></a>
-                                        <a href="<c:url value="/j_spring_security_logout" />">Logout <c:out value="${SPRING_SECURITY_LAST_USERNAME}"/></a>
-                                    </p>
+                                    <div class="dropdown navbar-text pull-right" id="menu1">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+                                            <c:out value="${pageContext.request.userPrincipal.name}"/>
+                                            <b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/Gymapp/private/profile/view">Profile</a></li>
+                                            <li><a href="/Gymapp/private/preferences/all">Preferences</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="<c:url value="/j_spring_security_logout" />">Logout <c:out value="${SPRING_SECURITY_LAST_USERNAME}"/></a></li>
+                                        </ul>
+                                    </div>
                                 </c:when>
                                 <c:otherwise>
                                     <p class="navbar-text pull-right">
@@ -71,6 +87,7 @@
                                 <li><a href="/Gymapp/private/preferences/all">Preferences</a></li>
                                 <li><a href="/Gymapp/private/goals/all">Goals</a></li>
                             </ul>
+
                         </div>
                     </div>
                 </div>

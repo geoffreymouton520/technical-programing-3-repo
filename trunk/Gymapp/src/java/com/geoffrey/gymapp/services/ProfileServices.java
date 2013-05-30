@@ -12,4 +12,5 @@ import com.geoffrey.gymapp.presentation.web.model.ProfileModel;
  */
 public interface ProfileServices {
     public ProfileModel getProfile(String userName);
+    public void updateProfile(ProfileModel profileModel);
 }

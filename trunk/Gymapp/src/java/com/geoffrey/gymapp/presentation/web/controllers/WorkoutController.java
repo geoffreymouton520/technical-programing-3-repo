@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class WorkoutController {
-    private static ApplicationContext ctx;
+   /* private static ApplicationContext ctx;
     @Autowired
     @Qualifier("exerciseService")
     private ExerciseServices exerciseService;
@@ -99,5 +99,5 @@ public class WorkoutController {
         List<Exercise> exercises = exerciseService.getExercises();
         model.addAttribute("exercises", exercises);
         return "/private/exercise/all";
-    }
+    }*/
 }
