@@ -4,8 +4,11 @@
  */
 package com.geoffrey.gymapp.services.impl;
 
+import com.geoffrey.gymapp.app.factory.PreferencesFactory;
 import com.geoffrey.gymapp.domain.Exercise;
+import com.geoffrey.gymapp.domain.MeasuringUnit;
 import com.geoffrey.gymapp.domain.Person;
+import com.geoffrey.gymapp.domain.Preferences;
 import com.geoffrey.gymapp.services.PersonService;
 import com.geoffrey.gymapp.services.crud.PersonCrudService;
 import java.util.List;
@@ -42,6 +45,9 @@ public class PersonServiceImpl implements PersonService{
 
     @Override
     public void addPerson(Person person) {
+        PreferencesFactory preferencesFactory = PreferencesFactory.getInstance();
+        Preferences preferences = preferencesFactory.getPreferences(MeasuringUnit.METRIC, 60);
+        person.setPreferences(preferences);
         personCrudService.persist(person);
     }
 
