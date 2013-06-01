@@ -16,11 +16,22 @@ import org.springframework.stereotype.Service;
  * @author 211026298
  */
 @Service("userServices")
-public class UserServicesImpl implements UserServices{
+public class UserServicesImpl implements UserServices {
 
     @Autowired
     private UserCrudService userCrudService;
-    
+
+    @Override
+    public boolean userExists(String userName) {
+        List<Users> users = userCrudService.findAll();
+        for (Users user : users) {
+            if (user.getUserName().equals(userName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public void updateUser(Users user) {
         Users currentUser = userCrudService.findById(user.getId());
@@ -52,7 +63,4 @@ public class UserServicesImpl implements UserServices{
     public void deleteUser(long id) {
         userCrudService.removeById(id);
     }
-    
-    
-    
 }

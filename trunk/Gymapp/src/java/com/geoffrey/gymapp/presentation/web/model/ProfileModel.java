@@ -21,7 +21,35 @@ public class ProfileModel implements Serializable {
     private String lastName;
     private String middleName;
     private String gender;
+    private String physicalAddress;
+    private String postalAddress;
+    private String postalCode;
 
+    public String getPhysicalAddress() {
+        return physicalAddress;
+    }
+
+    public void setPhysicalAddress(String physicalAddress) {
+        this.physicalAddress = physicalAddress;
+    }
+
+    public String getPostalAddress() {
+        return postalAddress;
+    }
+
+    public void setPostalAddress(String postalAddress) {
+        this.postalAddress = postalAddress;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    
     public String getUserID() {
         return userID;
     }

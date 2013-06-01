@@ -12,6 +12,7 @@ import java.util.List;
  * @author 211026298
  */
 public interface UserServices {
+    
     public void updateUser(Users user);
     
     public List<Users> getUsers();
@@ -21,4 +22,6 @@ public interface UserServices {
     public Users getUserByID(long id);
     
     public void deleteUser(long id);
+
+    public boolean userExists(String userName);
 }

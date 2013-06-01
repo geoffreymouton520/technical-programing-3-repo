@@ -18,7 +18,6 @@
 
             $('.dropdown-toggle').dropdown();
 
-
         </script>
         <style type="text/css">
             body {
@@ -62,6 +61,8 @@
                                         <ul class="dropdown-menu">
                                             <li><a href="/Gymapp/private/profile/view">Profile</a></li>
                                             <li><a href="/Gymapp/private/preferences/all">Preferences</a></li>
+                                            <li><a href="/Gymapp/private/goals/all">Goals</a></li>
+                                            <li><a href="/Gymapp/private/statistics/all">Statistics</a></li>
                                             <li class="divider"></li>
                                             <li><a href="<c:url value="/j_spring_security_logout" />">Logout <c:out value="${SPRING_SECURITY_LAST_USERNAME}"/></a></li>
                                         </ul>
@@ -82,10 +83,7 @@
                                     </sec:authorize>
                                 <li><a href="/Gymapp/private/exercise/all">Exercise</a></li>                           
                                 <li><a href="/Gymapp/private/routines/all">Routines</a></li>
-                                <li><a href="/Gymapp/private/statistics/all">Statistics</a></li>
                                 <li><a href="/Gymapp/private/workout/all">Workout</a></li>
-                                <li><a href="/Gymapp/private/preferences/all">Preferences</a></li>
-                                <li><a href="/Gymapp/private/goals/all">Goals</a></li>
                             </ul>
 
                         </div>
@@ -107,12 +105,9 @@
                                         <li><a href="/Gymapp/private/user/add">Add User</a></li>
                                         </sec:authorize>
                                 </http>
-                                <li><a href="/Gymapp/private/exercise/add">Add Exercise</a></li>
                                 <li><a href="/Gymapp/private/routines/add">Add Routine</a></li>
-                                <li><a href="/Gymapp/private/statistics/add">Add Statistics</a></li>
                                 <li><a href="/Gymapp/private/workout/add">Add Workout</a></li>
-                                <li><a href="/Gymapp/private/preferences/add">Add Preferences</a></li>
-                                <li><a href="/Gymapp/private/goals/add">Add Goals</a></li>
+                                <li><a href="/Gymapp/private/exercise/add">Add Exercise</a></li>
                             </ul>
                         </div><!--/.well -->
                     </div><!--/span-->
