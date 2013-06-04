@@ -23,11 +23,9 @@ public class ExerciseGoalFactory {
         return exerciseGoalFactory;
     }
     
-    public ExerciseGoal getExerciseGoal(String name, float weight, int exerciseSets){
+    public ExerciseGoal getExerciseGoal( float weight, int exerciseSets){
         ExerciseGoal exerciseGoal = new ExerciseGoal();
-       
-        exerciseGoal.setName(name);
-        exerciseGoal.setExerciseSet(exerciseSets);
+        exerciseGoal.setExerciseSets(exerciseSets);
         exerciseGoal.setWeight(weight);
         return exerciseGoal;
     }

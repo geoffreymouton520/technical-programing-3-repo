@@ -12,4 +12,7 @@ public interface JPAProcedures {
     public void createExercise();
     
     public void findDiscount(int numOfSeats, int discPercentage);
+    
+    public String insertTestValues();
+    public String insertTestPart2Values() ;
 }

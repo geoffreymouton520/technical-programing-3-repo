@@ -34,11 +34,11 @@ public class ExercisePreference implements Serializable {
         this.repitions = repitions;
     }
 
-    public int getExerciseSet() {
+    public int getExerciseSets() {
         return exerciseSets;
     }
 
-    public void setExerciseSet(int exerciseSet) {
+    public void setExerciseSets(int exerciseSet) {
         this.exerciseSets = exerciseSet;
     }
 

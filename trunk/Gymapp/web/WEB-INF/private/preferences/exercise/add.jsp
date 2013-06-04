@@ -6,7 +6,7 @@
 <t:genericpage>
     <jsp:body>
         <form class="form-actions" method="post" action="save.html">
-            <legend>Add Statistic</legend>
+            <legend>Add Exercise Preference</legend>
             <table>
                 <tr>
                     <td><label >Exercise</label></td>
@@ -22,19 +22,15 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label>Set</label></td>
-                    <td><input class="input-block-level" name="setNumber" placeholder="Sets"/></td>
+                    <td><label>Sets</label></td>
+                    <td><input class="input-block-level" name="exerciseSets" placeholder="Sets"/></td>
                 </tr>
                 <tr>
                     <td><label>Repetitions</label></td>
                     <td><input class="input-block-level" name="repitions" placeholder="Repitions"/></td>
                 </tr>
-                <tr>
-                    <td><label>Weight</label></td>
-                    <td><input class="input-block-level" name="weight" placeholder="Weight"/></td>
-                </tr>
                 <td colspan="2">
-                    <input class="btn" type="submit" value="Add Statistic"/>
+                    <input class="btn" type="submit" value="Add Goal"/>
                 </td>
             </table> 
         </form>

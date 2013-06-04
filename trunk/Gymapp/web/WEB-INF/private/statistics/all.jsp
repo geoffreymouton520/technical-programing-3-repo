@@ -5,27 +5,21 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericpage>
     <jsp:body>
-        <h2>All Exercises</h2>
+        <h2>All Statistics</h2>
         <table class="table table-striped">
             <thead>
-            <th>Name</th>
-            <th>Muscle Group</th>
-            <th>Description</th>
-            <th>Equipment</th>
-            <th>Instructions</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>Exercise</th>
+            <th>Sets</th>
+            <th>Repetitions</th>
+            <th>Weight</th>
         </thead>
         <tbody>
-            <c:forEach items="${exercises}" var="exercise">
+            <c:forEach items="${statistics}" var="statistic">
                 <tr>
-                    <td>${exercise.name}</td>
-                    <td>${exercise.muscleGroup}</td>
-                    <td>${exercise.description}</td>
-                    <td>${exercise.equipment}</td>
-                    <td>${exercise.instructions}</td>
-                    <td><a href="/Gymapp/private/exercise/edit?exerciseID=${exercise.id}">Edit</a></td>
-                    <td><a href="/Gymapp/private/exercise/delete?exerciseID=${exercise.id}">Delete</a></td>
+                    <td>${statistic.exercise.name}</td>
+                    <td>${statistic.setNumber}</td>
+                    <td>${statistic.repitions}</td>
+                    <td>${statistic.weight}</td>
                 </tr>
             </c:forEach>
         </tbody>

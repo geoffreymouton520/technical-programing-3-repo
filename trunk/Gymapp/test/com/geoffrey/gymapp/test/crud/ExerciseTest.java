@@ -61,17 +61,6 @@ public class ExerciseTest {
     public void tearDownMethod() throws Exception {
     }
     
-    /*@Test
-    public void testProcedure() {
-        JPAProcedures jPAProcedures = (JPAProcedures)ctx.getBean("procedures");
-        int discPercentage = 5;
-        //jPAProcedures.findDiscount(20, discPercentage);
-        jPAProcedures.createExercise();
-        Assert.assertEquals(discPercentage, 5);
-        
-        
-    }*/
-    
     @Test
     public void createExercise() {
         exerciseCrudService = (ExerciseCrudService) ctx.getBean("exerciseCrudService");

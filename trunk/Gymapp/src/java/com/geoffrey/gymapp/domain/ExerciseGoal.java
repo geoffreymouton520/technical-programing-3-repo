@@ -35,12 +35,12 @@ public class ExerciseGoal extends Goal implements Serializable {
         this.weight = weight;
     }
 
-    public int getExerciseSet() {
+    public int getExerciseSets() {
         return exerciseSets;
     }
 
-    public void setExerciseSet(int exerciseSet) {
-        this.exerciseSets = exerciseSet;
+    public void setExerciseSets(int exerciseSets) {
+        this.exerciseSets = exerciseSets;
     }
 
     public Exercise getExercise() {
@@ -49,22 +49,6 @@ public class ExerciseGoal extends Goal implements Serializable {
 
     public void setExercise(Exercise exercise) {
         this.exercise = exercise;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
     }
     
     public Long getId() {

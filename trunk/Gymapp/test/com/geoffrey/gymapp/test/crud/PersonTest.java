@@ -8,16 +8,9 @@ import com.geoffrey.gymapp.app.factory.PersonFactory;
 import com.geoffrey.gymapp.domain.Gender;
 import com.geoffrey.gymapp.domain.Person;
 import com.geoffrey.gymapp.services.crud.PersonCrudService;
-import com.geoffrey.gymapp.services.impl.PersonConvertModelToDomainImpl;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.testng.Assert;
@@ -72,15 +65,6 @@ public class PersonTest {
         personDetails.put("LastName", "Mouton");
         personDetails.put("MiddleName", "Gerald");
         personDetails.put("DOB", "23-11-1992");
-        //Date dateOfBirth = new Date(1992,11,23);//21-05-2013
-        
-        /*Date dateOfBirth = null;
-        DateFormat df = new SimpleDateFormat("dd-mm-yy"); 
-        try {
-            dateOfBirth = (Date)df.parse("21-05-2013");
-        } catch (ParseException ex) {
-            Logger.getLogger(PersonConvertModelToDomainImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
         Person person = personFactory.getPerson(personDetails, Gender.MALE);
         
         

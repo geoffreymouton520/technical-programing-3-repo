@@ -24,10 +24,8 @@ public class BodyStatGoalFactory {
         return bodyStatGoalFactory;
     }
     
-    public BodyStatGoal getBodyStatGoal(String name, float statGoal, StatGroup statGroup){
+    public BodyStatGoal getBodyStatGoal(float statGoal, StatGroup statGroup){
         BodyStatGoal bodyStatGoal = new BodyStatGoal();
-       
-        bodyStatGoal.setName(name);
         bodyStatGoal.setStatGoal(statGoal);
         bodyStatGoal.setStatGroup(statGroup);
         return bodyStatGoal;

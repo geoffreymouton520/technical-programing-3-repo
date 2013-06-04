@@ -5,35 +5,23 @@
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <t:genericpage>
     <jsp:body>
-        <h2>Exercise Manager</h2>
         <form class="form-actions" method="post" action="save.html">
+            <legend>Add Workout</legend>
             <table>
                 <tr>
-                    <td><label >Calories Burned</label></td>
-                    <td><input class="input-block-level" name="caloriesBurned"/></td>
+                    <td><label >Total Calories Burned</label></td>
+                    <td><input class="input-block-level" name="totalCaloriesBurned"/></td>
                 </tr>
                 <tr>
-                    <td><label >Description</label></td>
-                    <td><input class="input-block-level"  name="description"/></td>
+                    <td><label >Duration in Minutes</label></td>
+                    <td><input class="input-block-level"  name="workoutDurationInMins"/></td>
                 </tr>
                 <tr>
-                    <td><label >Equipment</label></td>
-                    <td><input class="input-block-level" name="equipment"/></td>
-                </tr>
-                <tr>
-                    <td><label >Instructions</label></td>
-                    <td><input class="input-block-level" name="instructions"/></td>
-                </tr>
-                <tr>
-                    <td><label >Name</label></td>
-                    <td><input class="input-block-level" name="name"/></td>
-                </tr>
-                <tr>
-                    <td><label >Muscle Group</label></td>
+                    <td><label >Fitness Level</label></td>
                     <td>
-                        <select class="input-block-level" name="muscleGroup">
-                            <option value="">---Select Muscle Group---</option>
-                            <c:forEach items="${muscleGroups}" var="option">
+                        <select class="input-block-level" name="fitnessLevel">
+                            <option value="">---Select Fitness Level---</option>
+                            <c:forEach items="${fitnessLevels}" var="option">
                                 <option value="${option}">
                                     ${option}
                                 </option>
@@ -42,19 +30,20 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label >Repetitions</label></td>
-                    <td><input class="input-block-level" name="repitions"/></td>
-                </tr>
-                <tr>
-                    <td><label >Exercise Sets</label></td>
-                    <td><input class="input-block-level" name="exerciseSets"/></td>
-                </tr>
-                <tr>
-                    <td><label >Weight</label></td>
-                    <td><input class="input-block-level" name="weight"/></td>
+                    <td><label >Exercise</label></td>
+                    <td>
+                        <select multiple="true" class="input-block-level" name="workoutItemsId" >
+                            <option value="">---Select Exercise Type---</option>
+                            <c:forEach items="${exercises}" var="option">
+                                <option value="${option.id}">
+                                    ${option.name}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </td>
                 </tr>
                 <td colspan="2">
-                    <input class="btn" type="submit" value="Add Exercise"/>
+                    <input class="btn" type="submit" value="Add Workout"/>
                 </td>
             </table> 
         </form>

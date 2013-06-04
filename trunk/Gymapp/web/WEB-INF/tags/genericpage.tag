@@ -60,8 +60,8 @@
                                         </a>
                                         <ul class="dropdown-menu">
                                             <li><a href="/Gymapp/private/profile/view">Profile</a></li>
-                                            <li><a href="/Gymapp/private/preferences/all">Preferences</a></li>
-                                            <li><a href="/Gymapp/private/goals/all">Goals</a></li>
+                                            <li><a href="/Gymapp/private/preferences/view">Preferences</a></li>
+                                            <li><a href="/Gymapp/private/goal/all">Goals</a></li>
                                             <li><a href="/Gymapp/private/statistics/all">Statistics</a></li>
                                             <li class="divider"></li>
                                             <li><a href="<c:url value="/j_spring_security_logout" />">Logout <c:out value="${SPRING_SECURITY_LAST_USERNAME}"/></a></li>
@@ -79,11 +79,14 @@
                                 <li class="active"><a href="/Gymapp/index">Home</a></li>
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                                     <li><a href="/Gymapp/private/person/all">Person</a></li>
-                                    <li><a href="/Gymapp/private/user/all">User</a></li>
                                     </sec:authorize>
                                 <li><a href="/Gymapp/private/exercise/all">Exercise</a></li>                           
-                                <li><a href="/Gymapp/private/routines/all">Routines</a></li>
+                                <li><a href="/Gymapp/private/fitnessRoutine/all">Routines</a></li>
                                 <li><a href="/Gymapp/private/workout/all">Workout</a></li>
+                                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                    <li><a href="/Gymapp/private/testvalues/runPart1">Test Values Part 1</a></li>
+                                    <li><a href="/Gymapp/private/testvalues/runPart2">Test Values Part 2</a></li>
+                                    </sec:authorize>
                             </ul>
 
                         </div>
@@ -99,13 +102,15 @@
                             <ul class="nav nav-list">
                                 <li class="nav-header">Crud</li>
                                 <li class="active"><a href="/Gymapp/index">Home</a></li>
-                                <http use-expressions="true">
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                                         <li><a href="/Gymapp/private/person/add">Add Person</a></li>
                                         <li><a href="/Gymapp/private/user/add">Add User</a></li>
                                         </sec:authorize>
-                                </http>
-                                <li><a href="/Gymapp/private/routines/add">Add Routine</a></li>
+                                        <sec:authorize access="hasRole('ROLE_USER')">
+                                        <li><a href="/Gymapp/private/goal/add">Add Goal</a></li>
+                                        <li><a href="/Gymapp/private/statistics/add">Add Statistic</a></li>
+                                        </sec:authorize>
+                                <li><a href="/Gymapp/private/fitnessRoutine/add">Add Routine</a></li>
                                 <li><a href="/Gymapp/private/workout/add">Add Workout</a></li>
                                 <li><a href="/Gymapp/private/exercise/add">Add Exercise</a></li>
                             </ul>
