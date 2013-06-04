@@ -24,7 +24,7 @@ public class WorkoutFactory {
         return workoutFactory;
     }
     
-    public Workout getWorkout(FitnessLevel fitnessLevel, int totalCaloriesBurned, int workoutDurationInMins){
+    public Workout getWorkout(FitnessLevel fitnessLevel, float totalCaloriesBurned, int workoutDurationInMins){
         Workout workout = new Workout();
        
         workout.setFitnessLevel(fitnessLevel);

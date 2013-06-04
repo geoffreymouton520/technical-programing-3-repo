@@ -4,21 +4,21 @@
  */
 package com.geoffrey.gymapp.presentation.web.controllers;
 
+import com.geoffrey.gymapp.domain.BodyStatGoal;
 import com.geoffrey.gymapp.domain.Exercise;
-import com.geoffrey.gymapp.domain.MuscleGroup;
-import com.geoffrey.gymapp.presentation.web.model.ExerciseModel;
-import com.geoffrey.gymapp.services.ExerciseConvertModelToDomain;
+import com.geoffrey.gymapp.domain.ExerciseGoal;
+import com.geoffrey.gymapp.domain.Person;
+import com.geoffrey.gymapp.domain.StatGroup;
+import com.geoffrey.gymapp.domain.Users;
 import com.geoffrey.gymapp.services.ExerciseServices;
-import com.geoffrey.gymapp.services.PersonConvertModelToDomain;
 import com.geoffrey.gymapp.services.PersonService;
+import com.geoffrey.gymapp.services.crud.UserCrudService;
+import java.security.Principal;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,75 +29,70 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class GoalController {
-    /*private static ApplicationContext ctx;
-    @Autowired
-    @Qualifier("exerciseService")
+
+    private static ApplicationContext ctx;
+    private UserCrudService userCrudService;
+    private PersonService personService;
     private ExerciseServices exerciseService;
-    
-    @Autowired
-    @Qualifier("exerciseConvertModelToDomain")
-    private ExerciseConvertModelToDomain exerciseConvertModelToDomain;
-    
-    @RequestMapping(value="private/exercise/add")
-    public String addExercise(Model model) {
-        model.addAttribute("muscleGroups", MuscleGroup.values());
-        return "private/exercise/add";
+
+    @RequestMapping(value = "private/goal/add")
+    public String addGoal(Model model) {
+        return "private/goal/add";
     }
-    
-    @RequestMapping(value = "private/exercise/save", method = RequestMethod.POST)
-    public String saveExercise(Model model, @ModelAttribute("exercise") ExerciseModel exerciseModel){
+
+    @RequestMapping(value = "private/goal/addselect")
+    public String selectAddGoal(Model model, @RequestParam("goal") String goalType) {
+        if (goalType.equals("body")) {
+            model.addAttribute("statsGroups", StatGroup.values());
+            return "private/goal/body/add";
+        } else {
+            ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
+            exerciseService = (ExerciseServices) ctx.getBean("exerciseService");
+            List<Exercise> exercises = exerciseService.getExercises();
+            model.addAttribute("exercises", exercises);
+            return "private/goal/exercise/add";
+        }
+    }
+
+    @RequestMapping(value = "private/goal/all")
+    public String showGoals(Model model) {
+        return "private/goal/all";
+    }
+
+    @RequestMapping(value = "private/goal/allselect", method = RequestMethod.POST)
+    public String selectShowGoals(Model model, @RequestParam("goal") String goalType, Principal principal) {
         ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
-        exerciseService = (ExerciseServices) ctx.getBean("exerciseService");
-        exerciseConvertModelToDomain = (ExerciseConvertModelToDomain) ctx.getBean("exerciseConvertModelToDomain");
-        
-        Exercise exercise = exerciseConvertModelToDomain.convertToExercise(exerciseModel);
-        exerciseService.addExercise(exercise);
-        
-        List<Exercise> exercises = exerciseService.getExercises();
-        model.addAttribute("exercises", exercises);
-        return "/private/exercise/all";
+        userCrudService = (UserCrudService) ctx.getBean("usersCrudService");
+        personService = (PersonService) ctx.getBean("personService");
+        if (goalType.equals("body")) {
+            String userName = principal.getName();
+            Users tempUser = userCrudService.getByPropertyName("userName", userName);
+            Person tempPerson = tempUser.getPerson();
+            Long personID = tempPerson.getId();
+            
+            Person currentPerson = personService.getPersonByID(personID);
+            List<BodyStatGoal> bodyStatGoals = currentPerson.getBodyStatGoals();
+            model.addAttribute("bodyStatGoals", bodyStatGoals);
+            return "private/goal/body/all";
+        } else {
+            String userName = principal.getName();
+            Users tempUser = userCrudService.getByPropertyName("userName", userName);
+            Person tempPerson = tempUser.getPerson();
+            Long personID = tempPerson.getId();
+            
+            Person currentPerson = personService.getPersonByID(personID);
+            List<ExerciseGoal> exerciseGoals = currentPerson.getExerciseGoals();
+            model.addAttribute("exerciseGoals", exerciseGoals);
+            return "private/goal/exercise/all";
+        }
     }
-    
-    @RequestMapping(value = "private/exercise/all")
-    public String showExercises(Model model){
-        List<Exercise> exercises = exerciseService.getExercises();
-        model.addAttribute("exercises", exercises);
-        return "private/exercise/all";
+
+    @RequestMapping(value = "private/goal/editselect", method = RequestMethod.POST)
+    public String selectEditGoal(Model model, @RequestParam("goal") String goalType) {
+        if (goalType.equals("body")) {
+            return "private/goal/body/edit";
+        } else {
+            return "private/goal/exercise/edit";
+        }
     }
-    
-    @RequestMapping(value = "private/exercise/edit")
-    public String editExercise(Model model,@RequestParam("exerciseID") long exerciseId){
-        Exercise exercise = exerciseService.getExerciseByID(exerciseId);
-        model.addAttribute("exercise", exercise);
-        model.addAttribute("muscleGroups", MuscleGroup.values());
-        return "/private/exercise/edit";
-    }
-    
-    
-    @RequestMapping(value = "private/exercise/update")
-    public String updateExercise(Model model,@ModelAttribute("exercise") ExerciseModel exerciseModel){
-        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
-        exerciseService = (ExerciseServices) ctx.getBean("exerciseService");
-        exerciseConvertModelToDomain = (ExerciseConvertModelToDomain) ctx.getBean("exerciseConvertModelToDomain");
-        
-        Exercise exercise = exerciseConvertModelToDomain.convertToExercise(exerciseModel);
-        exercise.setId(Long.parseLong(exerciseModel.getId()));
-        exerciseService.updateExercise(exercise);
-        
-        List<Exercise> exercises = exerciseService.getExercises();
-        model.addAttribute("exercises", exercises);
-        return "/private/exercise/all";
-    }
-    
-    @RequestMapping(value = "private/exercise/delete")
-    public String deleteExercise(Model model,@RequestParam("exerciseID") long exerciseId){
-        ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
-        exerciseService = (ExerciseServices) ctx.getBean("exerciseService");
-        
-        exerciseService.deleteExercise(exerciseId);
-        
-        List<Exercise> exercises = exerciseService.getExercises();
-        model.addAttribute("exercises", exercises);
-        return "/private/exercise/all";
-    }*/
 }

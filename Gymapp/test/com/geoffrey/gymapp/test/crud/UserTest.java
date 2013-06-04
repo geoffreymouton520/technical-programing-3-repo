@@ -73,34 +73,26 @@ public class UserTest {
     public void createUsers() {
         
         usersCrudService = (UserCrudService) ctx.getBean("usersCrudService");
-        Users user = usersCrudService.getByPropertyName("userName", "johncash250");
-        Assert.assertNotNull(user);
-        /*UserFactory usersFactory = UserFactory.getInstance();
-        
+        UserFactory usersFactory = UserFactory.getInstance();
         Users user = usersFactory.getUser("johncash250", "56803537");
-        //rolesCrudService = (RolesCrudService) ctx.getBean("rolesCrudService");
-        //RolesFactory rolesFactory = RolesFactory.getInstance();
+        rolesCrudService = (RolesCrudService) ctx.getBean("rolesCrudService");
+        RolesFactory rolesFactory = RolesFactory.getInstance();
         
-        //List<UserRoles> userRoles = new ArrayList<UserRoles>();
-        //userRoleServices.addUserRole(userRoles);
-        //user.setRoles(userRoles);
-       // List<UserRoles> userRoles = new ArrayList<UserRoles>();
-        //userRoleServices.addUserRole(userRoles);
-       // user.setRoles(userRoles);
-        usersCrudService.persist(user);
+        List<UserRoles> userRoles = new ArrayList<UserRoles>();
         
-        /*UserRoles role = rolesFactory.getRole("ROLE_USER", "user");
+        
+        UserRoles role = rolesFactory.getRole("ROLE_USER", "user");
         rolesCrudService.persist(role);
         
         userRoles.add(role);
-        user.setRoles(userRoles);*/
+        user.setRoles(userRoles);
         
-       // usersCrudService.persist(user);
-        /*id = user.getId();
-        Assert.assertNotNull(user);*/
+       usersCrudService.persist(user);
+        id = user.getId();
+        Assert.assertNotNull(user);
         
     }
-    /*
+    
     
     @Test(dependsOnMethods ="createUsers" )
     public void readUsers() {
@@ -139,5 +131,5 @@ public class UserTest {
         Assert.assertNull(deletedUsers);
         
         
-    }*/
+    }
 }

@@ -9,8 +9,6 @@ import com.geoffrey.gymapp.domain.MuscleGroup;
 import com.geoffrey.gymapp.presentation.web.model.ExerciseModel;
 import com.geoffrey.gymapp.services.ExerciseConvertModelToDomain;
 import com.geoffrey.gymapp.services.ExerciseServices;
-import com.geoffrey.gymapp.services.PersonConvertModelToDomain;
-import com.geoffrey.gymapp.services.PersonService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

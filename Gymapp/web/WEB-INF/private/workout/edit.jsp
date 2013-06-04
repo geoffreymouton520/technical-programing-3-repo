@@ -1,34 +1,27 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <t:genericpage>
     <jsp:body>
-        <h2>Exercise Manager</h2>
         <form class="form-actions" method="post" action="update.html">
+            <legend>Edit Workout</legend>
             <table>
                 <tr>
-                    <td><label >Calories Burned</label></td>
-                    <td><input class="input-block-level" name="caloriesBurned" value="${exercise.caloriesBurned}"/></td>
+                    <td><label >Total Calories Burned</label></td>
+                    <td><input class="input-block-level" name="totalCaloriesBurned" value="${workout.totalCaloriesBurned}"/></td>
                 </tr>
                 <tr>
-                    <td><label >Description</label></td>
-                    <td><input class="input-block-level"  name="description" value="${exercise.description}"/></td>
+                    <td><label >Duration in Minutes</label></td>
+                    <td><input class="input-block-level"  name="workoutDurationInMins" value="${workout.workoutDurationInMins}"/></td>
                 </tr>
                 <tr>
-                    <td><label >Equipment</label></td>
-                    <td><input class="input-block-level" name="equipment" value="${exercise.equipment}"/></td>
-                </tr>
-                <tr>
-                    <td><label >Instructions</label></td>
-                    <td><input class="input-block-level" name="instructions" value="${exercise.instructions}"/></td>
-                </tr>
-                <tr>
-                    <td><label >Name</label></td>
-                    <td><input class="input-block-level" name="name" value="${exercise.name}"/></td>
-                </tr>
-                <tr>
-                    <td><label >Muscle Group</label></td>
-                    <td><select class="input-block-level" name="muscleGroup">
-                            <c:forEach items="${muscleGroups}" var="option">
+                    <td><label >Fitness Level</label></td>
+                    <td>
+                        <select class="input-block-level" name="fitnessLevel"  >
+                            <option value="">---Select Fitness Level---</option>
+                            <c:forEach items="${fitnessLevels}" var="option">
                                 <option value="${option}">
                                     ${option}
                                 </option>
@@ -37,23 +30,23 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label >Repetitions</label></td>
-                    <td><input class="input-block-level" name="repitions" value="${exercise.repitions}"/></td>
+                    <td><label >Exercise</label></td>
+                    <td>
+                        <select multiple="true" class="input-block-level" name="workoutItemsId" >
+                            <option value="">---Select Exercise Type---</option>
+                            <c:forEach items="${exercises}" var="option">
+                                <option value="${option.id}">
+                                    ${option.name}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </td>
                 </tr>
-                <tr>
-                    <td><label >Exercise Sets</label></td>
-                    <td><input class="input-block-level" name="exerciseSets" value="${exercise.exerciseSets}"/></td>
-                </tr>
-                <tr>
-                    <td><label >Weight</label></td>
-                    <td><input class="input-block-level" name="weight" value="${exercise.weight}"/></td>
-                </tr>
-                <input type="hidden" name="id" value="${exercise.id}">
+                <input type="hidden" name="id" value="${workout.id}">
                 <td colspan="2">
-                    <input class="btn" type="submit" value="Update Exercise"/>
+                    <input class="btn" type="submit" value="Update"/>
                 </td>
             </table> 
-            
         </form>
     </jsp:body>
 </t:genericpage>

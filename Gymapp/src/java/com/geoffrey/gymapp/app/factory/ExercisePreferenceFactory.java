@@ -27,7 +27,7 @@ public class ExercisePreferenceFactory {
     public ExercisePreference getExercisePreference(int exerciseSets, int repitions){
         ExercisePreference exercisePreference = new ExercisePreference();
        
-        exercisePreference.setExerciseSet(exerciseSets);
+        exercisePreference.setExerciseSets(exerciseSets);
         exercisePreference.setRepitions(repitions);
         return exercisePreference;
     }

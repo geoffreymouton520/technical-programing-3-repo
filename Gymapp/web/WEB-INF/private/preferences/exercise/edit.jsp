@@ -5,8 +5,8 @@
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <t:genericpage>
     <jsp:body>
-        <form class="form-actions" method="post" action="save.html">
-            <legend>Add Statistic</legend>
+        <form class="form-actions" method="post" action="update.html">
+            <legend>Edit Exercise Preference</legend>
             <table>
                 <tr>
                     <td><label >Exercise</label></td>
@@ -22,21 +22,19 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label>Set</label></td>
-                    <td><input class="input-block-level" name="setNumber" placeholder="Sets"/></td>
+                    <td><label>Sets</label></td>
+                    <td><input class="input-block-level" name="exerciseSets" value="${exercisePreference.exerciseSets}"/></td>
                 </tr>
                 <tr>
                     <td><label>Repetitions</label></td>
-                    <td><input class="input-block-level" name="repitions" placeholder="Repitions"/></td>
+                    <td><input class="input-block-level" name="repitions" value="${exercisePreference.repitions}"/></td>
                 </tr>
-                <tr>
-                    <td><label>Weight</label></td>
-                    <td><input class="input-block-level" name="weight" placeholder="Weight"/></td>
-                </tr>
+                <input type="hidden" name="id" value="${exercisePreference.id}">
                 <td colspan="2">
-                    <input class="btn" type="submit" value="Add Statistic"/>
+                    <input class="btn" type="submit" value="Update"/>
                 </td>
             </table> 
+            
         </form>
     </jsp:body>
 </t:genericpage>
