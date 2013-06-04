@@ -88,7 +88,6 @@
                                     <li><a href="/Gymapp/private/testvalues/runPart2">Test Values Part 2</a></li>
                                     </sec:authorize>
                             </ul>
-
                         </div>
                     </div>
                 </div>
@@ -102,10 +101,6 @@
                             <ul class="nav nav-list">
                                 <li class="nav-header">Crud</li>
                                 <li class="active"><a href="/Gymapp/index">Home</a></li>
-                                    <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                        <li><a href="/Gymapp/private/person/add">Add Person</a></li>
-                                        <li><a href="/Gymapp/private/user/add">Add User</a></li>
-                                        </sec:authorize>
                                         <sec:authorize access="hasRole('ROLE_USER')">
                                         <li><a href="/Gymapp/private/goal/add">Add Goal</a></li>
                                         <li><a href="/Gymapp/private/statistics/add">Add Statistic</a></li>

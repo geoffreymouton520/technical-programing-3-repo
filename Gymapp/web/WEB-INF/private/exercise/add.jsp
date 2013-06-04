@@ -10,7 +10,7 @@
             <table>
                 <tr>
                     <td><label >Calories Burned</label></td>
-                    <td><input class="input-block-level" name="caloriesBurned"/></td>
+                    <td><input class="input-block-level" name="caloriesBurned"/><label class="error">${errormessage}</label></td>
                 </tr>
                 <tr>
                     <td><label >Description</label></td>

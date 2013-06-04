@@ -77,6 +77,13 @@ public class ExerciseController {
         ctx = new ClassPathXmlApplicationContext("classpath:com/geoffrey/gymapp/app/config/applicationContext-*.xml");
         exerciseService = (ExerciseServices) ctx.getBean("exerciseService");
         exerciseConvertModelToDomain = (ExerciseConvertModelToDomain) ctx.getBean("exerciseConvertModelToDomain");
+        try {
+            float caloriesBurned = Float.parseFloat(exerciseModel.getCaloriesBurned());
+        } catch (NumberFormatException e) {
+            model.addAttribute("errormessage", "Invalid Calories Burned.");
+            model.addAttribute("muscleGroups", MuscleGroup.values());
+            return "private/exercise/add";
+        }
         
         Exercise exercise = exerciseConvertModelToDomain.convertToExercise(exerciseModel);
         exercise.setId(Long.parseLong(exerciseModel.getId()));
