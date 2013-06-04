@@ -30,7 +30,16 @@
                 </tr>
                 <tr>
                     <td><label >Gender</label></td>
-                    <td><input class="input-block-level" name="gender" value="${person.gender}"/></td>
+                    <td>
+                        <select required="true" class="input-block-level" name="gender">
+                            <option value="">---Select Gender---</option>
+                            <c:forEach items="${genders}" var="option">
+                                <option value="${option}">
+                                    ${option}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </td>
                 </tr>
                 <input type="hidden" name="id" value="${person.id}">
                 <td colspan="2">

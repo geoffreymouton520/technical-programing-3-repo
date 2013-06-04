@@ -4,6 +4,7 @@
  */
 package com.geoffrey.gymapp.presentation.web.controllers;
 
+import com.geoffrey.gymapp.domain.Gender;
 import com.geoffrey.gymapp.domain.Person;
 import com.geoffrey.gymapp.presentation.web.model.PersonModel;
 import com.geoffrey.gymapp.services.PersonConvertModelToDomain;
@@ -75,6 +76,7 @@ public class PersonController {
         
         Person person = personService.getPersonByID(personId);
         model.addAttribute("person", person);
+        model.addAttribute("genders", Gender.values());
         return "private/person/edit";
     }
     
