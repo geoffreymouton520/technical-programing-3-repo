@@ -317,15 +317,15 @@ public class JPAProceduresImpl implements JPAProcedures {
         query.executeUpdate();
         query = em.createNativeQuery("BEGIN p_insertfitnessroutine( 10003, 0, 'Feel your heart pumping yet?', 3); END;");
         query.executeUpdate();
-        query = em.createNativeQuery("BEGIN p_insertfitnessroutine( 10004, 1, 'Dont give up just yet', 4); END;");
+        query = em.createNativeQuery("BEGIN p_insertfitnessroutine( 10004, 1, 'Dont give up just yet', 0); END;");
         query.executeUpdate();
-        query = em.createNativeQuery("BEGIN p_insertfitnessroutine( 10005, 2, 'For the seasoned', 5); END;");
+        query = em.createNativeQuery("BEGIN p_insertfitnessroutine( 10005, 2, 'For the seasoned', 1); END;");
         query.executeUpdate();
-        query = em.createNativeQuery("BEGIN p_insertfitnessroutine( 10006, 0, 'Keep sweating', 6); END;");
+        query = em.createNativeQuery("BEGIN p_insertfitnessroutine( 10006, 0, 'Keep sweating', 2); END;");
         query.executeUpdate();
-        query = em.createNativeQuery("BEGIN p_insertfitnessroutine( 10007, 1, 'Hardcore', 7); END;");
+        query = em.createNativeQuery("BEGIN p_insertfitnessroutine( 10007, 1, 'Hardcore', 3); END;");
         query.executeUpdate();
-        query = em.createNativeQuery("BEGIN p_insertfitnessroutine( 10008, 2, 'Major Pain', 8); END;");
+        query = em.createNativeQuery("BEGIN p_insertfitnessroutine( 10008, 2, 'Major Pain', 0); END;");
         query.executeUpdate();
     }
 
@@ -351,15 +351,15 @@ public class JPAProceduresImpl implements JPAProcedures {
 
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT)
     private void insertUserRoles() {
-        Query query = em.createNativeQuery("BEGIN p_insertuserrole( 11001, 1, 'ROLE_ADMIN', 2001); END;");
+        Query query = em.createNativeQuery("BEGIN p_insertuserrole( 11001, 1, 'ROLE_ADMIN', 2011); END;");
         query.executeUpdate();
-        query = em.createNativeQuery("BEGIN p_insertuserrole( 11002, 1, 'ROLE_ADMIN', 2002); END;");
+        query = em.createNativeQuery("BEGIN p_insertuserrole( 11002, 1, 'ROLE_ADMIN', 2012); END;");
         query.executeUpdate();
-        query = em.createNativeQuery("BEGIN p_insertuserrole( 11003, 1, 'ROLE_USER', 2003); END;");
+        query = em.createNativeQuery("BEGIN p_insertuserrole( 11003, 1, 'ROLE_USER', 2013); END;");
         query.executeUpdate();
-        query = em.createNativeQuery("BEGIN p_insertuserrole( 11004, 1, 'ROLE_USER', 2004); END;");
+        query = em.createNativeQuery("BEGIN p_insertuserrole( 11004, 1, 'ROLE_USER', 2014); END;");
         query.executeUpdate();
-        query = em.createNativeQuery("BEGIN p_insertuserrole( 11005, 1, 'ROLE_USER', 2005); END;");
+        query = em.createNativeQuery("BEGIN p_insertuserrole( 11005, 1, 'ROLE_USER', 2015); END;");
         query.executeUpdate();
     }
 

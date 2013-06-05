@@ -80,7 +80,7 @@
                         <td><div class="controls">
                                 <div class="input-prepend">
                                     <span class="add-on"><i class="icon-lock"></i></span>
-                                    <input type="text" class="input-xlarge" name="password" placeholder="*******" >
+                                    <input type="password" class="input-xlarge" name="password" placeholder="*******" >
                                 </div>
                             </div></td>
                     </tr>
@@ -89,7 +89,7 @@
                         <td><div class="controls">
                                 <div class="input-prepend">
                                     <span class="add-on"><i class="icon-lock"></i></span>
-                                    <input type="text" class="input-xlarge" name="passwordRetype" placeholder="*******" >
+                                    <input type="password" class="input-xlarge" name="passwordRetype" placeholder="*******" >
                                 </div>
                             </div></td>
                     </tr>
