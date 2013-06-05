@@ -69,7 +69,7 @@ public class RoleTest {
     public void readRoles() {
         rolesCrudService = (RolesCrudService) ctx.getBean("rolesCrudService");
         UserRoles roles = rolesCrudService.findById(id);
-        Assert.assertEquals(roles.getDescription(), "Administrator");
+        Assert.assertEquals(roles.getDescription(), "user");
         
     }
     
