@@ -98,7 +98,7 @@ public class UserTest {
     public void readUsers() {
         usersCrudService = (UserCrudService) ctx.getBean("usersCrudService");
         Users users = usersCrudService.findById(id);
-        Assert.assertEquals(users.getUserName(), "admin");
+        Assert.assertEquals(users.getUserName(), "johncash250");
         
     }
     
