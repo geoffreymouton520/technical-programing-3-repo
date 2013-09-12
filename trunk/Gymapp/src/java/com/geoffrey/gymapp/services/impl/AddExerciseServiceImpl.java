@@ -4,7 +4,6 @@
  */
 package com.geoffrey.gymapp.services.impl;
 
-import com.geoffrey.gymapp.app.exceptions.ExerciseNullExecption;
 import com.geoffrey.gymapp.app.factory.ExerciseFactory;
 import com.geoffrey.gymapp.domain.Exercise;
 import com.geoffrey.gymapp.domain.MuscleGroup;
