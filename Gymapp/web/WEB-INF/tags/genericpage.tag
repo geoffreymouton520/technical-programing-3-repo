@@ -83,10 +83,7 @@
                                 <li><a href="/Gymapp/private/exercise/all">Exercise</a></li>                           
                                 <li><a href="/Gymapp/private/fitnessRoutine/all">Routines</a></li>
                                 <li><a href="/Gymapp/private/workout/all">Workout</a></li>
-                                <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                    <li><a href="/Gymapp/private/testvalues/runPart1">Test Values Part 1</a></li>
-                                    <li><a href="/Gymapp/private/testvalues/runPart2">Test Values Part 2</a></li>
-                                    </sec:authorize>
+                                <li><a href="/Gymapp/private/workout/all">Workout</a></li>
                             </ul>
                         </div>
                     </div>
