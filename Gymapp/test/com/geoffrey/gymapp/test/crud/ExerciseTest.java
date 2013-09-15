@@ -6,7 +6,6 @@ package com.geoffrey.gymapp.test.crud;
 
 import com.geoffrey.gymapp.domain.Exercise;
 import com.geoffrey.gymapp.domain.MuscleGroup;
-import com.geoffrey.gymapp.services.JPAProcedures;
 import com.geoffrey.gymapp.services.AddExerciseService;
 import com.geoffrey.gymapp.services.crud.ExerciseCrudService;
 import java.util.HashMap;

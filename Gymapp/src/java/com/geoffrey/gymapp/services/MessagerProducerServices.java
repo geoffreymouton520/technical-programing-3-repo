@@ -16,5 +16,5 @@ public interface MessagerProducerServices {
     void createSession(Boolean transacted,int acknowledgeMode);
     void createDestination(String name);
     void setupProducer();
-    void sendMessage();
+    void sendMessage(String text);
 }
