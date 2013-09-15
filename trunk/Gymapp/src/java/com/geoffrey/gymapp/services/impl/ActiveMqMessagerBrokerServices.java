@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
  *
  * @author geoffrey
  */
-@Service
+@Service("messagerBrokerServices")
 public class ActiveMqMessagerBrokerServices implements MessagerBrokerServices{
     private BrokerService brokerService;
     private TransportConnector transportConnector;

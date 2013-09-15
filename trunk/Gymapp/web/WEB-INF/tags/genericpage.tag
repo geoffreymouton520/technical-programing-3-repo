@@ -84,6 +84,7 @@
                                 <li><a href="/Gymapp/private/fitnessRoutine/all">Routines</a></li>
                                 <li><a href="/Gymapp/private/workout/all">Workout</a></li>
                                 <li><a href="/Gymapp/private/workout/all">Workout</a></li>
+                                <li><a href="/Gymapp/message/">Message</a></li>
                             </ul>
                         </div>
                     </div>
