@@ -8,23 +8,27 @@ import com.geoffrey.gymapp.domain.MQMessage;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
  * @author geoffrey
  */
-@Path("/json/message")
+@Controller
+@RequestMapping("/json/message")
 public class JSONMessageService {
-    @GET
-	@Path("/get")
-	@Produces("application/json")
-	public MQMessage getProductInJSON() {
-                MessageFactory messageFactory = MessageFactory.getInstance();
-		MQMessage mQMessage = messageFactory.getMessage("Hello World", "Greeting");
- 
-		return mQMessage; 
- 
-	}
+    
+    @RequestMapping("get")
+    @ResponseBody
+    public MQMessage getMessageInJSON() {
+            MessageFactory messageFactory = MessageFactory.getInstance();
+            MQMessage mQMessage = messageFactory.getMessage("Hello World", "Greeting");
+
+            return mQMessage; 
+
+    }
  /*
 	@POST
 	@Path("/post")
