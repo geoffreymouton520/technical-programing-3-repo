@@ -6,12 +6,14 @@ package com.geoffrey.gymapp.services.impl;
 
 import com.geoffrey.gymapp.app.factory.MessageFactory;
 import com.geoffrey.gymapp.domain.MQMessage;
+import com.geoffrey.gymapp.services.MessageServices;
 import com.geoffrey.gymapp.services.MessagerBrokerServices;
 import com.geoffrey.gymapp.services.MessagerConsumerServices;
 import com.geoffrey.gymapp.services.MessagerProducerServices;
 import com.geoffrey.gymapp.services.crud.MessageCrudService;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jms.JMSException;
@@ -29,7 +31,7 @@ import org.springframework.stereotype.Service;
  * @author geoffrey
  */
 @Service("messageServices")
-public class MessageServicesImpl {
+public class MessageServicesImpl implements MessageServices{
     @Autowired
     private MessagerBrokerServices messagerBrokerServices;
     
@@ -83,5 +85,39 @@ public class MessageServicesImpl {
             Logger.getLogger(MessageServicesImpl.class.getName()).log(Level.SEVERE, null, ex);
             return "";
         }
+    }
+    
+    @Override
+    public List<MQMessage> getMessages() {
+        List<MQMessage> messages = messageCrudService.findAll();
+        return messages;
+    }
+
+    @Override
+    public MQMessage addMessage(MQMessage message) {
+        messageCrudService.persist(message);
+        return message;
+    }
+
+    @Override
+    public MQMessage getMessageByID(long id) {
+        return messageCrudService.findById(id);
+    }
+
+    @Override
+    public MQMessage deleteMessage(long id) {
+        MQMessage currentMessage = messageCrudService.findById(id);
+        messageCrudService.removeById(id);
+        return currentMessage;
+    }
+
+    @Override
+    public MQMessage updateMessage(Long id,MQMessage message) {
+        MQMessage currentMessage = messageCrudService.findById(id);
+        currentMessage.setMessage(message.getMessage());
+        currentMessage.setQueue(message.getQueue());
+        currentMessage.setDateAdded(message.getDateAdded());
+        messageCrudService.merge(currentMessage);
+        return currentMessage;
     }
 }
