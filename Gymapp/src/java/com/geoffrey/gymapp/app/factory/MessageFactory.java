@@ -4,7 +4,6 @@
  */
 package com.geoffrey.gymapp.app.factory;
 
-import com.geoffrey.gymapp.domain.Address;
 import com.geoffrey.gymapp.domain.MQMessage;
 import java.util.Date;
 

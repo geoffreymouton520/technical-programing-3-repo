@@ -2,19 +2,30 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.geoffrey.gymapp.presentation.web.services.resource;
+package com.geoffrey.gymapp.presentation.web.model;
+
 import java.util.Date;
-import org.springframework.hateoas.ResourceSupport;
+
 /**
  *
  * @author geoffrey
  */
-public class MessagerResource extends ResourceSupport{
+public class MessageModel {
+    private Long messageId;
     private String message;
     private String queue;
     private Date dateAdded;
 
+    public MessageModel() {}
 
+    public Long getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(Long messageId) {
+        this.messageId = messageId;
+    }
+    
     public String getMessage() {
         return message;
     }
