@@ -53,8 +53,9 @@ public class RESTMessageService {
         //betResourceAssembler = new MessageResourceAssembler();
         MessageFactory messageFactory = MessageFactory.getInstance();
         MQMessage message = messageFactory.getMessage("test", "test");
-        MQMessage returnedMessage = messageServices.addMessage(message);//messageFactory.getMessage(betId);
-        MessageResource resource = betResourceAssembler.toResource(returnedMessage);
+        //MQMessage returnedMessage = messageServices.addMessage(message);//messageFactory.getMessage(betId);
+        messageServices.addMessage(message);
+        MessageResource resource = betResourceAssembler.toResource(message);
         return new ResponseEntity<MessageResource>(resource, HttpStatus.OK);
     }
 

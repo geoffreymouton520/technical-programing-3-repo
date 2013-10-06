@@ -4,6 +4,9 @@
  */
 package com.geoffrey.gymapp.test;
 
+import com.geoffrey.gymapp.app.factory.MessageFactory;
+import com.geoffrey.gymapp.domain.MQMessage;
+import com.geoffrey.gymapp.services.MessageServices;
 import com.geoffrey.gymapp.services.MessagerBrokerServices;
 import com.geoffrey.gymapp.services.MessagerConsumerServices;
 import com.geoffrey.gymapp.services.MessagerProducerServices;
@@ -95,5 +98,15 @@ public class MessangerTest {
         } catch (JMSException ex) {
             Logger.getLogger(MessangerTest.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    @Test
+    public void create(){
+        MessageServices messageServices = (MessageServices) ctx.getBean("messageServices");
+        MessageFactory messageFactory = MessageFactory.getInstance();
+        MQMessage message = messageFactory.getMessage("test", "test");
+        messageServices.addMessage(message);//messageFactory.getMessage(betId);
+        
+        Assert.assertNotNull(message);
     }
 }
