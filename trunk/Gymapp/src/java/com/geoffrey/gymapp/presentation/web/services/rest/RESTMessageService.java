@@ -33,7 +33,7 @@ public class RESTMessageService {
     @Autowired
     //@Qualifier("messageResourceAssembler")
     private MessageResourceAssembler betResourceAssembler;
-    @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.POST)
     ResponseEntity<MessageResource> createMessage(@RequestBody MQMessage body) {   
         MQMessage message = messageServices.addMessage(body);
         MessageResource resource = betResourceAssembler.toResource(message);
