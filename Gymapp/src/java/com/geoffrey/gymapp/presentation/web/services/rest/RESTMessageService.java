@@ -27,11 +27,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/rest/message")
 public class RESTMessageService {
     @Autowired
-    @Qualifier("messageServices")
+    //@Qualifier("messageServices")
     private MessageServices messageServices;
     
     @Autowired
-    @Qualifier("messageResourceAssembler")
+    //@Qualifier("messageResourceAssembler")
     private MessageResourceAssembler betResourceAssembler;
 
     ResponseEntity<MessageResource> createMessage(@RequestBody MQMessage body) {   
