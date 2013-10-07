@@ -48,11 +48,11 @@ public class RESTMessageService {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{betId}")
-    ResponseEntity<MessageResource> getMessage(@PathVariable Long betId){
+    ResponseEntity<MessageResource> getMessage(@PathVariable Long id){
         //messageServices = MessageFactory.getInstance();
         //betResourceAssembler = new MessageResourceAssembler();
         MessageFactory messageFactory = MessageFactory.getInstance();
-        MQMessage message = messageFactory.getMessage("test", "test");
+        MQMessage message = messageServices.getMessageByID(id);//messageFactory.getMessage("test", "test");
         //MQMessage returnedMessage = messageServices.addMessage(message);//messageFactory.getMessage(betId);
         messageServices.addMessage(message);
         MessageResource resource = betResourceAssembler.toResource(message);
